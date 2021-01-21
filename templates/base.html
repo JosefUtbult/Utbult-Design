@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Utbult Design - {% block title %}{% endblock %}</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
+
+    <!-- Bootstrap core CSS -->
+	<link href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='bootstrap/css/navbars.css')}}" rel="stylesheet">
+
+    <link rel="icon" href="{{url_for('static', filename='svg/UtbultDesign_Small_White.svg')}}">
+
+  </head>
+<body>
+	<main>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+		    <div class="container-fluid">
+				<a class="navbar-brand" href="#">Utbult Design</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarsExample05">
+					<ul class="navbar-nav me-auto mb-2 w-100 mb-lg-0 justify-content-end">
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Home</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Music</a>
+							<ul class="dropdown-menu" aria-labelledby="dropdown05">
+								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#">Another action</a></li>
+								<li><a class="dropdown-item" href="#">Something else here</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Hardware</a>
+							<ul class="dropdown-menu" aria-labelledby="dropdown05">
+								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#">Another action</a></li>
+								<li><a class="dropdown-item" href="#">Something else here</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Software</a>
+							<ul class="dropdown-menu" aria-labelledby="dropdown05">
+								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#">Another action</a></li>
+								<li><a class="dropdown-item" href="#">Something else here</a></li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">About me</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+	<div id="content">{% block content %}{% endblock %}</div>
+	<div id="footer">
+	    &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
+	</div>
+	</main>
+
+    <script src="{{url_for('static', filename='bootstrap/js/bootstrap.bundle.js')}}"></script>
+</body>
+</html>
