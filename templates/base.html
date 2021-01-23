@@ -10,57 +10,69 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
 
-    <!-- Bootstrap core CSS -->
 	<link href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    
-    <!-- Custom styles for this template -->
     <link href="{{url_for('static', filename='bootstrap/css/navbars.css')}}" rel="stylesheet">
+    <link rel="icon" href="{{url_for('static', filename='svg/Utbult-Design-Logo/logo/UtbultDesign_Small_White.svg')}}">
 
-    <link rel="icon" href="{{url_for('static', filename='svg/UtbultDesign_Small_White.svg')}}">
+	<link href="{{url_for('static', filename='css/base.css')}}" rel="stylesheet">
+	{% block css %}{% endblock %}
 
   </head>
 <body>
 	<main>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
-		    <div class="container-fluid">
-				<a class="navbar-brand" href="#">Utbult Design</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		    <div class="container-fluid align-items-end">
+		    	<div class="col-lg-5"></div>
+				<div class="col-lg-2 col-6 d-flex">
+					<a class="navbar-brand" href="{{ url_for('home') }}">
+						<div class="w-25 mx-auto text-center d-none d-lg-block">
+							<img src="{{url_for('static', filename='svg/Utbult-Design-Logo/logo_and_text/UtbultDesign_White.svg')}}" class="w-100">
+						</div>
+						<div class="mx-l text-center d-block d-lg-none" style="width: 10%;">
+							<img src="{{url_for('static', filename='svg/Utbult-Design-Logo/logo/UtbultDesign_White.svg')}}" class="w-100">
+						</div>
+					</a>
+				</div>
+				<div class="col-6 d-lg-none d-flex justify-content-end">
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-dropdown" aria-controls="navbar-dropdown" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-
-				<div class="collapse navbar-collapse" id="navbarsExample05">
-					<ul class="navbar-nav me-auto mb-2 w-100 mb-lg-0 justify-content-end">
-						<li class="nav-item active">
-							<a class="nav-link" href="#">Home</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Music</a>
-							<ul class="dropdown-menu" aria-labelledby="dropdown05">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li>
-							</ul>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Hardware</a>
-							<ul class="dropdown-menu" aria-labelledby="dropdown05">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li>
-							</ul>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Software</a>
-							<ul class="dropdown-menu" aria-labelledby="dropdown05">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">About me</a>
-						</li>
-					</ul>
+				</div>
+				<div class="col-lg-5 d-flex">
+					<div class="collapse navbar-collapse" id="navbar-dropdown">
+						<ul class="navbar-nav me-auto w-100 mb-lg-0 justify-content-end">
+							<li class="nav-item active">
+								<a class="nav-link" href="{{ url_for('home') }}">Home</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="dropdown_item" data-bs-toggle="dropdown" aria-expanded="false">Music</a>
+								<ul class="dropdown-menu" aria-labelledby="dropdown_item">
+									<li><a class="dropdown-item" href="#">Action</a></li>
+									<li><a class="dropdown-item" href="#">Another action</a></li>
+									<li><a class="dropdown-item" href="#">Something else here</a></li>
+								</ul>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="dropdown_item" data-bs-toggle="dropdown" aria-expanded="false">Hardware</a>
+								<ul class="dropdown-menu" aria-labelledby="dropdown_item">
+									<li><a class="dropdown-item" href="#">Action</a></li>
+									<li><a class="dropdown-item" href="#">Another action</a></li>
+									<li><a class="dropdown-item" href="#">Something else here</a></li>
+								</ul>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="dropdown_item" data-bs-toggle="dropdown" aria-expanded="false">Software</a>
+								<ul class="dropdown-menu" aria-labelledby="dropdown_item">
+									<li><a class="dropdown-item" href="#">Action</a></li>
+									<li><a class="dropdown-item" href="#">Another action</a></li>
+									<li><a class="dropdown-item" href="#">Something else here</a></li>
+								</ul>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">About me</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</nav>
