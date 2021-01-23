@@ -1,7 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
@@ -42,34 +42,32 @@
 					<div class="collapse navbar-collapse" id="navbar-dropdown">
 						<ul class="navbar-nav me-auto w-100 mb-lg-0 justify-content-end">
 							<li class="nav-item active">
-								<a class="nav-link" href="{{ url_for('home') }}">Home</a>
+								<a class="nav-link" href="{{ url_for('home') }}">
+									{% if lang == 'en' %}
+									Home
+									{% elif lang == 'sv' %}
+									Hem
+									{% endif %}
+								</a>
 							</li>
+							{% for category in projects %}
 							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="dropdown_item" data-bs-toggle="dropdown" aria-expanded="false">Music</a>
+								<a class="nav-link dropdown-toggle" href="#" id="dropdown_item" data-bs-toggle="dropdown" aria-expanded="false">{{ get_category_translation(category, lang) }}</a>
 								<ul class="dropdown-menu" aria-labelledby="dropdown_item">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
+									{% for project in projects.get(category) %}
+									<li><a class="dropdown-item" href="{{ url_for('render_project', category=category, project_path=project.get('path')) }}">{{ project.get('name').get(lang) }}</a></li>
+									{% endfor %}
 								</ul>
 							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="dropdown_item" data-bs-toggle="dropdown" aria-expanded="false">Hardware</a>
-								<ul class="dropdown-menu" aria-labelledby="dropdown_item">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
-								</ul>
-							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="dropdown_item" data-bs-toggle="dropdown" aria-expanded="false">Software</a>
-								<ul class="dropdown-menu" aria-labelledby="dropdown_item">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
-								</ul>
-							</li>
+							{% endfor %}
 							<li class="nav-item">
-								<a class="nav-link" href="#">About me</a>
+								<a class="nav-link" href="#">
+									{% if lang == 'en' %}
+									About me
+									{% elif lang == 'sv' %}
+									Om mig
+									{% endif %}
+								</a>
 							</li>
 						</ul>
 					</div>
