@@ -12,6 +12,7 @@
 
 	<link href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='bootstrap/css/navbars.css')}}" rel="stylesheet">
+
     <link rel="icon" href="{{url_for('static', filename='svg/Utbult-Design-Logo/logo/UtbultDesign_Small_White.svg')}}">
 
 	<link href="{{url_for('static', filename='css/base.css')}}" rel="stylesheet">
@@ -24,7 +25,7 @@
 		    <div class="container-fluid align-items-end">
 		    	<div class="col-lg-5"></div>
 				<div class="col-lg-2 col-6 d-flex">
-					<a class="navbar-brand" href="{{ url_for('home') }}">
+					<a class="navbar-brand" href="{{ url_for('home') }}?language={{ lang }}">
 						<div class="w-25 mx-auto text-center d-none d-lg-block">
 							<img src="{{url_for('static', filename='svg/Utbult-Design-Logo/logo_and_text/UtbultDesign_White.svg')}}" class="w-100">
 						</div>
@@ -42,11 +43,11 @@
 					<div class="collapse navbar-collapse" id="navbar-dropdown">
 						<ul class="navbar-nav me-auto w-100 mb-lg-0 justify-content-end">
 							<li class="nav-item active">
-								<a class="nav-link" href="{{ url_for('home') }}">
-									{% if lang == 'en' %}
-									Home
-									{% elif lang == 'sv' %}
+								<a class="nav-link" href="{{ url_for('home') }}?language={{ lang }}">
+									{% if lang == 'sv' %}
 									Hem
+									{% else %}
+									Home
 									{% endif %}
 								</a>
 							</li>
@@ -55,17 +56,26 @@
 								<a class="nav-link dropdown-toggle" href="#" id="dropdown_item" data-bs-toggle="dropdown" aria-expanded="false">{{ get_category_translation(category, lang) }}</a>
 								<ul class="dropdown-menu" aria-labelledby="dropdown_item">
 									{% for project in projects.get(category) %}
-									<li><a class="dropdown-item" href="{{ url_for('render_project', category=category, project_path=project.get('path')) }}">{{ project.get('name').get(lang) }}</a></li>
+									<li><a class="dropdown-item" href="{{ url_for('render_project', category=category, project_path=project.get('path')) }}?language={{ lang }}">{{ project.get('name').get(lang) }}</a></li>
 									{% endfor %}
 								</ul>
 							</li>
 							{% endfor %}
 							<li class="nav-item">
 								<a class="nav-link" href="#">
-									{% if lang == 'en' %}
-									About me
-									{% elif lang == 'sv' %}
-									Om mig
+									{% if lang == 'sv' %}
+									Om Mig
+									{% else %}
+									About Me
+									{% endif %}
+								</a>
+							</li>
+							<li class="nav-item active">
+								<a class="nav-link" href="{{ request.path }}?language={% if lang == 'sv' %}en{% else %}sv{% endif %} ">
+									{% if lang == 'sv' %}
+									In English
+									{% else %}
+									På Svenska
 									{% endif %}
 								</a>
 							</li>

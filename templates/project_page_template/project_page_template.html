@@ -1,0 +1,61 @@
+{% extends "base/base.html" %}
+{% block title %}Triangular Ear Bass{% endblock %}
+{% block css %}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-3 d-lg-block d-none"></div>
+		<div class="col-lg-6 col-12">
+		    <h1 class="text-center mt-2 mb-4">
+		    	{% block project_title %}{% endblock %}
+		    </h1>
+		    <div>
+		    	{% block project_content %}{% endblock %}
+		    </div>
+		</div>
+	</div>
+{% endblock %}
+
+{% macro heading(text) %}
+	<h2>{{text}}</h2>
+{% endmacro %}
+
+{% macro subheading(text) %}
+	<h3>{{text}}</h3>
+{% endmacro %}
+
+{% macro subsubheading(text) %}
+	<h4>{{text}}</h4>
+{% endmacro %}
+
+{% macro textbox(text) %}
+<div class="vl px-2">
+	<p>
+		{{ text }}
+	</p>
+</div>
+{% endmacro %}
+
+{% macro image(link) %}
+<div class="w-60 mt-3 mb-5">
+	<img src="{{ link }}" class="w-100">
+</div>
+{% endmacro %}
+
+{% macro github_link(link) %}
+<div class="d-float justify-content-center my-3">
+	<a href="{{ link }}">
+		<button class="btn btn-light">
+			<h4>
+			{% if lang == 'sv' %}
+			Se projektet på Github
+			{% else %}
+			View project on Github
+			{% endif %}
+			</h4>
+			<img class="w-25" src="{{ url_for('static', filename='svg/github_logo.svg') }}">
+		</button>
+	</a>
+</div>
+{% endmacro %}

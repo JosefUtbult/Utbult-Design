@@ -1,5 +1,4 @@
-{% extends "base.html" %}
-{% block title %}Home{% endblock %}
+{% extends "base/base.html" %}
 {% block css %}
 <link href="{{url_for('static', filename='css/base.css')}}" rel="stylesheet">
 {% endblock %}
@@ -10,9 +9,11 @@
     </h1>
     {% for category in projects %}
     <div class="mb-0 py-20" style="background: url({{url_for('static', filename='categories/' + category + '/background.jpeg')}})">
-    	<h2 class="category_heading text-center mb-0">
-	    	{{ category }}
-	    </h2>
+        <a href="{{ url_for('render_category', category=category) }}?language={{ lang }}">
+            <h2 class="category_heading text-center mb-0">
+    	    	{{ category }}
+    	    </h2>
+        </a>
     </div>
     {% endfor %}
 {% endblock %}

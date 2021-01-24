@@ -1,9 +1,13 @@
-{% extends "base.html" %}
-{% block title %}Triangular Ear Bass{% endblock %}
-{% block css %}{% endblock %}
+{% from "project_page_template/project_page_template.html" import image, github_link %}
+{% extends "project_page_template/project_page_template.html" %}
 
-{% block content %}
-    <h1>
-    	Triangular Ear Bass
-    </h1>
+{% block project_content %}
+{% block text_1 %}{% endblock %}
+{{ github_link('https://github.com/') }}
+{{ image(url_for('static', filename='categories/Music/Triangular-Ear-Bass/image_1.jpeg')) 
+}}{% block text_2 %}{% endblock %}
+{{ image(url_for('static', filename='categories/Music/Triangular-Ear-Bass/image_2.jpeg')) }}
+{% block text_3 %}{% endblock %}
+{{ image(url_for('static', filename='categories/Music/Triangular-Ear-Bass/image_3.jpeg')) }}
+{% block text_4 %}{% endblock %}
 {% endblock %}
