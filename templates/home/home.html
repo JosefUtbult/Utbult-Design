@@ -1,19 +1,27 @@
 {% extends "base/base.html" %}
 {% block css %}
-<link href="{{url_for('static', filename='css/base.css')}}" rel="stylesheet">
+<link href="{{url_for('static', filename='css/home.css')}}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
     <h1 class="text-center">
     	{% block hello %}{% endblock %}
     </h1>
-    {% for category in projects %}
-    <div class="mb-0 py-20" style="background: url({{url_for('static', filename='categories/' + category + '/background.jpeg')}})">
-        <a href="{{ url_for('render_category', category=category) }}?language={{ lang }}">
-            <h2 class="category_heading text-center mb-0">
-    	    	{{ category }}
-    	    </h2>
-        </a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2 d-lg-block d-none"></div>
+            <div class="col-lg-8 col-12 px-0">
+                {% for category in projects %}
+                <a href="{{ url_for('render_category', category=category) }}?language={{ lang }}">
+                    <div class="my-4 py-20 home-category-container" style="background: url({{ url_for('static', filename='categories/' + category + '/background.svg')}})">
+                        <h2 class="category_heading text-center mb-0" style="text-shadow: 0 0 20px {{ get_category_color(category) }}">
+                            {{ get_category_translation(category, lang) }}
+                        </h2>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-    {% endfor %}
+        
 {% endblock %}

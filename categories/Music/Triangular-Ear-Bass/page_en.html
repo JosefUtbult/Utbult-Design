@@ -1,29 +1,56 @@
 {% from "project_page_template/project_page_template.html" import textbox, heading, subheading, subsubheading %}
 {% extends "categories/Music/Triangular-Ear-Bass/page.html" %}
 
-{% block heading %}Triangular Ear Bass Mod{% endblock %}
-{% block project_title %}Triangular Ear Bass Mod{% endblock %}
+{% block heading %}Triangular Ear Bass - Modded{% endblock %}
+{% block project_title %}Triangular Ear Bass - Modded{% endblock %}
 {% block text_1 %}
 {{ textbox("
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse venenatis magna ligula, vel blandit turpis molestie sit amet. Duis venenatis lacus ullamcorper erat feugiat, non finibus lectus posuere. Quisque quis iaculis odio, ac congue nunc. Suspendisse suscipit tristique massa vitae finibus. Pellentesque et lorem turpis. Morbi fermentum ut dolor sit amet imperdiet. Pellentesque suscipit lobortis dui. Donec finibus est sapien, vitae ornare tellus venenatis id. Aliquam fringilla sit amet tortor ac lacinia. Sed ut maximus leo, eu viverra lectus. Ut lectus enim, tempus placerat varius id, tincidunt ornare lacus. Mauris auctor dui lorem, et maximus massa consectetur id. Integer dignissim sapien magna, varius accumsan risus porttitor ac. Etiam arcu tortor, pretium in diam nec, mattis tempus elit. Nulla maximus ipsum ac purus tristique, at interdum arcu viverra. 
+This is a clone of one of the more widely known bass preamp pedals, originally made by Diz. This version is modded and traced by me, but I still highly recommend you to check out the original.
 ") }}
 {% endblock %}
 
 {% block text_2 %}
-{{ heading("Start") }}
 {{ textbox("
-Nullam varius justo sit amet leo posuere, in tincidunt arcu mollis. Quisque aliquam felis sit amet velit imperdiet sodales. Mauris pellentesque feugiat sapien, ut iaculis mi. Maecenas odio libero, euismod at ex id, suscipit feugiat arcu. Morbi laoreet dapibus diam non vehicula. Phasellus efficitur est augue, et dapibus nisi auctor in. Nunc ornare mauris a egestas blandit. Morbi ornare pretium ipsum, at venenatis quam auctor in. Duis dui arcu, ultricies eget dolor in, semper efficitur nibh. In efficitur ante sit amet dapibus mollis. Sed ipsum felis, lobortis non augue eu, molestie mollis quam. Mauris a elit dolor. Ut id elit velit. Nulla ut fermentum nibh. Aenean porttitor erat in condimentum tincidunt. 
+This preamp consists of a drive stage that can be blended with the clean signal, a two band equalizer suited for bass and a balancing step to enable an XLR connection. My humble contribution is not that extinctive. Other than a stereo potentiometer on the blend step to enable cleaner max/min values, the only thing I've added is a power regulator circuit to run the pedal on phantom power. This regulator should be able to handle all standard voltages for phantom power up to 63 V.
 ") }}
 {% endblock %}
 
 {% block text_3 %}
+{{ subheading("Schematic and breadboard test") }}
 {{ textbox("
-Etiam porta nulla non tincidunt suscipit. Suspendisse ullamcorper tortor eget erat faucibus, a volutpat leo pretium. Nunc luctus venenatis lacus, vitae auctor eros mollis a. Integer at semper ante. Integer purus velit, rutrum sed efficitur ut, faucibus vel lorem. Duis non efficitur ipsum. Nulla a lorem a nisi pharetra sagittis. Donec at leo erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed consectetur molestie odio eget euismod. Vestibulum vulputate ante lacus, vel tincidunt leo commodo sed. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec venenatis enim lorem, eget pretium ante ornare et. Proin tincidunt commodo consectetur. Fusce scelerisque ligula neque, et mollis diam interdum vel. Cras quis maximus nunc. 
+The first step in my usual process is to draw everything up as a schematic in Eagle. This is kinda straight forward; wire everything and check every connection and value a couple of times extra. After this the pedal got prototyped on a breadboard. Sadly, as my now retired breadboard had a couple of bad connectors, the shape pot didn't connect properly. Therefore I assumed that this variable didn't effect the sound all that much, and therefore skipped this pot on my first version of the PCB. Later, when one of my friends soldered together one of the PCBs, he patched in a shape pot and got it working. Long story short, don't use bad breadboards.
+
+This is the first version built on the breadboard.
 ") }}
 {% endblock %}
 
 {% block text_4 %}
 {{ textbox("
-Nunc condimentum nulla magna, eu finibus nisl imperdiet in. Cras diam velit, ullamcorper sed sollicitudin at, porttitor vitae turpis. Ut pulvinar maximus est. Vivamus leo magna, interdum a mollis nec, euismod id tortor. Mauris fermentum lectus ultricies ex posuere, pulvinar cursus velit porttitor. Mauris bibendum sapien quis gravida fringilla. Duis faucibus est a lorem facilisis, nec aliquam ex bibendum. Morbi sodales ex vitae venenatis dignissim. Curabitur efficitur, ligula eget tincidunt vestibulum, nibh nisl tincidunt neque, eget tincidunt felis leo sed sem. Morbi venenatis justo nunc, id congue ligula rhoncus quis. Nunc hendrerit nulla et risus volutpat varius. 
+And here is the schematic (A new version with the shape pot added).
+") }}
+{% endblock %}
+
+{% block text_5 %}
+{{ subheading("First PCB") }}
+{{ textbox("
+This is the first version of the PCB that I made. As you might see, its not very good. For you who are new to routing PCBs I recommend that you place components as close to their respective connection as possible, and not in a bunch of rows. But though not optimal, it worked great. The reason that it has all connections on a socket was because I had an idea of creating a semi-modular pedalboard, something like a euro-synth rack. I did try this out, but as it weren't as space saving as I thought it would be I abandoned that idea.
+") }}
+{% endblock %}
+
+{% block text_6 %}
+{{ textbox("
+And here is the first version soldered up. As you can see the footprint for the capacitors where to small, but everything worked as it should anyway.
+") }}
+{% endblock %}
+
+{% block text_7 %}
+{{ subheading("Second PCB") }}
+{{ textbox("
+The second version of the PCB solved a bunch of the inherited problems from its predecessor. It has the sustain knob on it, the components fits as they should and the shape is made to fit inside a BB pedal enclosure. The reason for the cutout in the left bottom corner, is for an XLR jack to fit alongside an ordinary jack on the left side of the pedal. I also made sure to structure everything so that the phantom power regulator parts and the balancing step parts are separated, so that these parts can be excluded if these functions isn't required for your pedal.
+") }}
+{% endblock %}
+{% block text_8 %}
+{{ textbox("
+Here is the final version soldered up. It's a bit cramped, but everything fits and works as intended. All the correspondent eagle files can be found on my Github, if you want to check it out, or modify it. I also uploaded a zipped gerber archive with everything if you just want to order the PCB for yourself.
 ") }}
 {% endblock %}

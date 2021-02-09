@@ -1,11 +1,12 @@
 {
 	"sv": {
 		"category_name": "Musik",
-		"project_name": {"Triangular-Ear-Bass": "Triangulär öron-bas"}
+		"project_name": {"Triangular-Ear-Bass": "Triangular Ear Bass - Moddad"}
 	},
 
 	"en": {
 		"category_name": "Music",
-		"project_name": {"Triangular-Ear-Bass": "Triangular Ear Bass"}
-	}
+		"project_name": {"Triangular-Ear-Bass": "Triangular Ear Bass - Modded"}
+	},
+	"color": "#efea19"
 }

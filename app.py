@@ -2,7 +2,8 @@ from internal import *
 from flask import Flask, render_template, abort, request
 
 app = Flask(__name__)
-app.jinja_env.globals.update(get_category_translation=get_category_translation)
+app.jinja_env.globals.update(get_category_translation=get_category_translation, 
+	get_category_color=get_category_color)
 
 @app.route('/', methods=['GET'])
 def home():

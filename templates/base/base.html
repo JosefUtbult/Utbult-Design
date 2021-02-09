@@ -21,7 +21,7 @@
   </head>
 <body>
 	<main>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-image" style="background: url({{ url_for('static', filename='svg/Utbult-Design-Logo/logo/UtbultDesign_header.svg') }}) no-repeat">
 		    <div class="container-fluid align-items-end">
 		    	<div class="col-lg-5"></div>
 				<div class="col-lg-2 col-6 d-flex">
@@ -86,9 +86,6 @@
 		</nav>
 
 	<div id="content">{% block content %}{% endblock %}</div>
-	<div id="footer">
-	    &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
-	</div>
 	</main>
 
     <script src="{{url_for('static', filename='bootstrap/js/bootstrap.bundle.js')}}"></script>

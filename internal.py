@@ -27,9 +27,15 @@ def get_category_translation(category, lang):
 	except KeyError:
 		return ''
 
+def get_category_color(category):
+	try:
+		return load_meta(category).get("color").upper()
+	except KeyError:
+		return "0x000000"
+
 
 def get_categories():
-	return os.listdir(get_abs_path(['templates', CATEGORIES_PATH]))
+	return sorted(os.listdir(get_abs_path(['templates', CATEGORIES_PATH])))
 
 
 # Get projects in form of {Category: 	[{name: project name with spaces, 
@@ -49,6 +55,7 @@ def get_projects():
 					'name': {'en': load_meta(category).get('en').get('project_name').get(project),
 						'sv': load_meta(category).get('sv').get('project_name').get(project)}
 				})
+		projects_dict[category].sort()
 	return projects_dict
 
 

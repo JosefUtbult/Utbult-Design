@@ -1,14 +1,13 @@
-{% extends "base.html" %}
-{% block title %}{{ category }}{% endblock %}
+{% extends "base/base.html" %}
 {% block css %}{% endblock %}
 
 {% block content %}
-    <h1>{{ category }}</h1>
+    <h1>{% block heading %}{% endblock %}</h1>
     <ul>
     	{% for project in projects.get(category) %}
     	<li>
     		<a href="{{ url_for('render_project', category=category, project_path=project.get('path')) }}">
-    			{{ project.get('name') }}
+    			{{ project.get('name').get(lang) }}
     		</a>
     	</li>
     	{% endfor %}

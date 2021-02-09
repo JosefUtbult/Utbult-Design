@@ -15,6 +15,7 @@
 		    </div>
 		</div>
 	</div>
+</div>
 {% endblock %}
 
 {% macro heading(text) %}
@@ -44,18 +45,34 @@
 {% endmacro %}
 
 {% macro github_link(link) %}
-<div class="d-float justify-content-center my-3">
-	<a href="{{ link }}">
-		<button class="btn btn-light">
-			<h4>
-			{% if lang == 'sv' %}
-			Se projektet på Github
-			{% else %}
-			View project on Github
-			{% endif %}
-			</h4>
-			<img class="w-25" src="{{ url_for('static', filename='svg/github_logo.svg') }}">
-		</button>
-	</a>
+<div class="d-flex flex-row-reverse my-3 px-2">
+	<div>
+		<a href="{{ link }}">
+			<button class="btn btn-light">
+				<h4>
+				{% if lang == 'sv' %}
+				Se projektet på Github
+				{% else %}
+				View project on Github
+				{% endif %}
+				</h4>
+				<img class="w-25" src="{{ url_for('static', filename='svg/github_logo.svg') }}">
+			</button>
+		</a>
+	</div>
+</div>
+{% endmacro %}
+
+{% macro link(title, link) %}
+<div class="d-flex flex-row-reverse my-3 px-2">
+	<div>
+		<a href="{{ link }}">
+			<button class="btn btn-light">
+				<h4>
+				{{ title }}
+				</h4>
+			</button>
+		</a>
+	</div>
 </div>
 {% endmacro %}
