@@ -1,4 +1,0 @@
-recursive-include utbult_design_theme *.yml *.ico *.js *.css *.png *.html *.eot *.svg *.ttf *.woff
-recursive-exclude * __pycache__
-recursive-exclude * *.py[co]
-include README.md

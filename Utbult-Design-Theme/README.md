@@ -1,4 +1,0 @@
-Setup
-```
-pip install .
-```
