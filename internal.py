@@ -45,9 +45,11 @@ def get_projects():
 	projects_dict = {}
 	for category in get_categories():
 		projects_dict[category] = []
-		projects = os.listdir(get_abs_path(['templates', CATEGORIES_PATH, category]))
+		abs_path = get_abs_path(['templates', CATEGORIES_PATH, category])
+
+		projects = [path for path in os.listdir(abs_path) if os.path.isdir(get_abs_path([abs_path, path]))]
 		for project in projects:
-			if os.path.isdir(get_abs_path(['templates', CATEGORIES_PATH, category, project])):
+			try:
 				projects_dict[category].append({
 					'category': {'en': load_meta(category).get('en').get('category_name'),
 						'sv': load_meta(category).get('sv').get('category_name')},
@@ -55,7 +57,10 @@ def get_projects():
 					'name': {'en': load_meta(category).get('en').get('project_name').get(project),
 						'sv': load_meta(category).get('sv').get('project_name').get(project)}
 				})
-		projects_dict[category].sort()
+				projects_dict[category].sort()
+			except:
+				print("Unable to parse project", project)
+				
 	return projects_dict
 
 

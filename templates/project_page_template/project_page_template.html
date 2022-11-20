@@ -38,8 +38,8 @@
 </div>
 {% endmacro %}
 
-{% macro image(link) %}
-<div class="w-60 mt-3 mb-5">
+{% macro image(link, image_width, alignment='center') %}
+<div class="w-{{ image_width or '100'}} mt-3 mb-5 {% if alignment == 'center' %}mx-auto{% elif alignment == 'left' %}mx-left{% elif alignment == 'right' %}mx-right{% endif %}">
 	<img src="{{ link }}" class="w-100">
 </div>
 {% endmacro %}

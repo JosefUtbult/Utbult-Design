@@ -8,8 +8,6 @@
     <meta name="generator" content="Hugo 0.79.0">
     <title>Utbult Design - {% block title %}{% endblock %}</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
-
 	<link href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='bootstrap/css/navbars.css')}}" rel="stylesheet">
 
@@ -52,7 +50,7 @@
 								</a>
 							</li>
 							{% for category in projects %}
-							<li class="nav-item dropdown">
+							<li class="nav-item dropdown active">
 								<a class="nav-link dropdown-toggle" href="#" id="dropdown_item" data-bs-toggle="dropdown" aria-expanded="false">{{ get_category_translation(category, lang) }}</a>
 								<ul class="dropdown-menu" aria-labelledby="dropdown_item">
 									{% for project in projects.get(category) %}
@@ -61,7 +59,7 @@
 								</ul>
 							</li>
 							{% endfor %}
-							<li class="nav-item">
+							<li class="nav-item active">
 								<a class="nav-link" href="#">
 									{% if lang == 'sv' %}
 									Om Mig

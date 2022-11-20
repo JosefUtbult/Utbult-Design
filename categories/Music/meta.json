@@ -1,12 +1,18 @@
 {
 	"sv": {
 		"category_name": "Musik",
-		"project_name": {"Triangular-Ear-Bass": "Triangular Ear Bass - Moddad"}
+		"project_name": {
+			"Triangular-Ear-Bass": "Triangular Ear Bass - Moddad",
+			"Pedal-Mixer": "Pedal Mixer"
+		}
 	},
 
 	"en": {
 		"category_name": "Music",
-		"project_name": {"Triangular-Ear-Bass": "Triangular Ear Bass - Modded"}
+		"project_name": {
+			"Triangular-Ear-Bass": "Triangular Ear Bass - Modded",
+			"Pedal-Mixer": "Pedal Mixer"
+		}
 	},
 	"color": "#efea19"
 }

@@ -2,14 +2,27 @@
 {% block css %}{% endblock %}
 
 {% block content %}
-    <h1>{% block heading %}{% endblock %}</h1>
-    <ul>
-    	{% for project in projects.get(category) %}
-    	<li>
-    		<a href="{{ url_for('render_project', category=category, project_path=project.get('path')) }}">
-    			{{ project.get('name').get(lang) }}
-    		</a>
-    	</li>
-    	{% endfor %}
-    </ul>
+    
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 d-lg-block d-none"></div>
+        <div class="col-lg-6 col-12">
+            <h1 class="text-center mt-2 mb-4">
+                {% block heading %}{% endblock %}
+            </h1>
+            <div class="text-center mt-2 mb-4">
+                
+                {% for project in projects.get(category) %}
+                <div class="my-4">
+                    <h3>
+                        <a href="{{ url_for('render_project', category=category, project_path=project.get('path')) }}">
+                            {{ project.get('name').get(lang) }}
+                        </a>
+                    </h3>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
