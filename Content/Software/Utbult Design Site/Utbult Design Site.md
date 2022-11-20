@@ -1,2 +1,0 @@
-# Utbult Design Site
-Content
