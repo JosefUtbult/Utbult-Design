@@ -1,2 +1,0 @@
-[mkdocs.themes]
-utbult-design = utbult_design_theme
