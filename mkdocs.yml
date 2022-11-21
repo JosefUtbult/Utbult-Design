@@ -1,4 +1,7 @@
 site_name: UTBULT DESIGN
 
+plugins:
+    - jinja2
+
 theme:
   name: utbult-design
