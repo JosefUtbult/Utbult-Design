@@ -1,7 +1,13 @@
 site_name: UTBULT DESIGN
 
 plugins:
-    - jinja2
+  - jinja2
 
 theme:
   name: utbult-design
+
+nav:
+  - Home: 'index.md'
+  - Software:
+    - Homebrewey Call of Cthulhu Theme: 'Projects/Software/HomebreweryCoCTheme/HomebreweryCoCTheme.md'
+  - About Me: 'about_me.md'
