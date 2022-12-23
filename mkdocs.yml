@@ -2,12 +2,17 @@ site_name: UTBULT DESIGN
 
 plugins:
   - jinja2
+  - translations:
+      default_language: sv
+      languages:
+        en: english
+        sv: svenska
+
+markdown_extensions:
+  - toc
+
+hooks:
+  - hooks/lang.py
 
 theme:
   name: utbult-design
-
-nav:
-  - Home: 'index.md'
-  - Software:
-    - Homebrewey Call of Cthulhu Theme: 'Projects/Software/HomebreweryCoCTheme/HomebreweryCoCTheme.md'
-  - About Me: 'about_me.md'
