@@ -1,6 +1,4 @@
 [submodule "Utbult-Design-Theme"]
 	path = Utbult-Design-Theme
 	url = git@github.com:josefutbult-webdevelopment/Utbult-Design-Theme.git
-[submodule "mkdocs-jinja2"]
-	path = mkdocs-jinja2
-	url = git@github.com:andyoakley/mkdocs-jinja2.git
+

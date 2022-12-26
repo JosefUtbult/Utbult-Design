@@ -9,6 +9,7 @@ def on_env(env, config, files, **kwargs):
     return env
 
 def on_pre_page(page, config, files):
+    pass
     #print(output_content)
     #print(template_name)
-    print([(key, config[key]) for key in config if 'url' in key])
+    #print([(key, config[key]) for key in config if 'url' in key])

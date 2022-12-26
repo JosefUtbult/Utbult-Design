@@ -13,6 +13,7 @@ markdown_extensions:
 
 hooks:
   - hooks/lang.py
+  - hooks/category.py
 
 theme:
   name: utbult-design

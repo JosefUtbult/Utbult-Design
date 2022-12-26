@@ -1,3 +1,7 @@
 .venv/
 venv/
+misc/
 site/
+**/__pycache__/
+mkdocs-simple-translate/
+*.code-workspace
