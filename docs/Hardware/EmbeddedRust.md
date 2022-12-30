@@ -10,8 +10,8 @@ image: Hardware/img/EmbeddedRust/nRF52840.jpg
 
 Vad är då fördelen med Rust?
 >Systems and application programming languages face two major problems
->-   It is difficult to write secure code.
->-   It is difficult to write multi-threaded code.
+>It is difficult to write secure code
+>(and) it is difficult to write multi-threaded code.
 
 Iden med Rust är att ha ett programmeringsspråk som prioriterar att utveckla snabba, hårdvarunära program. Detta görs med _concurrency_, dvs att programmet består av olika delar som kan köras samtidigt.
 
@@ -23,24 +23,24 @@ _Rustup_ är ett terminalbaserat verktyg för att hantera versioner av rustkompi
 När rustup installeras kommer också en kompilator för rust att hänga med, kallad _rustc_.
 
 ### Rustup installation - Manjaro
-```shell
+```bash
 sudo pacman -S rustup
 ```
 
 ## Introduktion till rust
-Här kommer en introduktion till rust. Om du känner att du har koll kan du skippa den. Annars om du känner dig relativt säker men vill ha en genomgång om ägandeskap kan du kolla [[#Exempel 8 - Ägandeskap]] och [[#Exempel 9 - Lånande]].
+Här kommer en introduktion till rust. Om du känner att du har koll kan du skippa den. Annars om du känner dig relativt säker men vill ha en genomgång om ägandeskap kan du kolla [Exempel 8 - Ägandeskap](#exempel-8-agandeskap) och [Exempel 9 - Lånande](#exempel-9-lanande).
 
 ### Exempel 1 - Hello World
 Vi börjar med ett enkelt exempel. Vi ska skriva ett _hello world_ program i rust och kompilerar det för att köras på din dator.
 
 Börja med att skapa en mapp som heter `exempel1-helloWorld`
-```shell
+```bash
 mkdir exempel1-helloWorld
 cd exempel1-helloWorld
 ```
 
 Där i vill vi skapa sourcefilen för hello world programmet
-```shell
+```bash
 touch helloWorld.rs
 ```
 
@@ -68,14 +68,14 @@ Det viktiga du behöver veta är att ett macro alltid markeras i rust med ett ut
 
 #### Kompilera programmet
 För att kompilera programmet använder vi en kompilator som hänger med i [[#Rustup|rustup]], kallad _rustc_. I `exempel1-helloWorld` där sourcefilen `helloWorld.rs` ligger vill du vara. Där kallar du på `rustc` och skickar in sourcefilen som ska kompileras.
-```shell
+```bash
 rustc helloWorld.rs
 ```
 
 Detta kommer genera en fil med samma namn, fast utan filändelsen `.rs`. Detta är vårt program.
 
 Testa att köra programmet i terminalen
-```shell
+```bash
 ./helloWorld
 ```
 
@@ -89,7 +89,7 @@ Det betyder egentligen att vi skriver i en sträng _vart ett argument ska skriva
 Vi gör ett exempelprogram där vi sparar antalet bröder du har i en variabel, och sedan printar denna variabel.
 
 Gör en ny mapp med namnet `example2-printaMedArgument` och i den, skapa en sourcefil med namnet `howManyBrothers.rs`.
-```shell
+```bash
 mkdir example2-howManyBrothers
 cd example2-howManyBrothers
 touch howManyBrothers.rs
@@ -99,12 +99,12 @@ I denna nya fil kan du skriva följande
 ```rust
 fn main()
 {
-	println!("I have {} brothers.", 3);
+    println!("I have {} brothers.", 3);
 }
 ```
 
-Sedan kompilera och kör programmet på samma sätt som i exempel 1
-```shell
+Sedan kompilera och kör programmet på samma sätt som i [exempel 1](exempel-1-hello-world)
+```bash
 rustc howManyBrothers.rs
 ./howManyBrothers
 ```
@@ -117,7 +117,7 @@ Rust kan, på samma sätt som till exempel python, själv räkna ut vilken typ e
 För att deklarera en variabel i rust använder du `let`.
 
 Vi gör om det föregående exemplet, fast nu använder vi en variabel för att spara hur många bröder du har.
-```shell
+```bash
 mkdir example3-howManyBrothersVar
 cd example3-howManyBrothersVar
 touch howManyBrothersVar.rs
@@ -125,14 +125,14 @@ touch howManyBrothersVar.rs
 
 Nu vill vi istället specificera en variabel där vi sparar hur många bröder du har och sedan använder den här variabeln i printsatsen.
 ```rust
-fn main() {  
+fn main() {
 	let brothers = 3;  
 	println!("I have {} brothers.", brothers);  
 }
 ```
 
 Testa att kompilera och köra detta
-```shell
+```bash
 rustc howManyBrothersVar.rs
 ./howManyBrothersVar
 ```
@@ -144,8 +144,8 @@ I rust specificerar vi detta igenom att skriva ett kolon efter variabelnamnet oc
 Testa att lägga till detta
 ```rust
 fn main() {  
-   let brothers:u8 = 3;  
-   println!("I have {} brothers.", brothers);  
+	let brothers:u8 = 3;  
+	println!("I have {} brothers.", brothers);  
 }
 ```
 
@@ -154,13 +154,13 @@ Kompilerar du och kör detta, kommer du få samma resultat som förut. Skulle du
 Testa att byta antalet bröder till `-1` och kompilera.
 ```rust
 fn main() {  
-   let brothers:u8 = -1;  
-   println!("I have {} brothers.", brothers);  
+	let brothers:u8 = -1;  
+	println!("I have {} brothers.", brothers);  
 }
 ```
 
 Detta resulterar i följande error
-```shell
+```bash
  |     let brothers:u8 = -1;  
  |                       ^^  
  |                       |  
@@ -175,7 +175,7 @@ I de flesta programmeringsspråk har du variabler som man kan ändra värde på,
 Detta är dock inte fallet i rust. Här måste du istället specificera att en variabel **ska** gå att ändra på.
 
 Vi testar med ett nytt exempel
-```shell
+```bash
 mkdir example4-howManyBrothersUpdate
 cd example4-howManyBrothersUpdate
 touch howManyBrothersUpdate.rs
@@ -194,7 +194,7 @@ fn main()
 ```
 
 Försöker du kompilera detta får du följande error
-```shell
+```bash
  |     brothers = 4;  
  |     ^^^^^^^^^^^^ cannot assign twice to immutable variable
 ```
@@ -369,7 +369,7 @@ fn main()
 ```
 
 Försöker vi kompilera det här får vi ett error som säger att variabeln vec har flyttats (och inte kunnat kopieras) och inte längre ägs av mainfunktionen. Därför kan den inte användas längre
-```shell
+```bash
  |     let mut vec:Vec<u8> = Vec::new();  
  |         ------- move occurs because `vec` has type `Vec<u8>`, which does not implement the `Copy` trait  
 ...  
@@ -512,12 +512,12 @@ För mer information om crates kan du kolla in [Tutorialspoint: Rust - Modules](
 
 ## Skapa ett projekt
 När du vill skapa ett projekt i rust använder du cargo. Du kan testa igenom att köra följande, som kommer att skapa mappen `cargo_test`
-```shell
+```bash
 cargo new cargo_test
 ```
 
 Det cargo gör är att den sätter upp en mappstruktur för dig och skapar de filer som krävs för att börja. Så här ser mappen ut när du skapar den
-```shell
+```
 ├── Cargo.toml  
 └── src  
    └── main.rs
@@ -526,7 +526,7 @@ Det cargo gör är att den sätter upp en mappstruktur för dig och skapar de fi
 Du får en `src` mapp där all din kod ska ligga och i den ligger `main.rs`, vilket är den fil programmet kommer leta efter funktionen main i. 
 
 I `main.rs` finns redan ett hello world exempel, så vi ska testa att bygga det. Det fina med att ha skapat projektet på det här sättet med cargo är att vi kan använda cargo för att bygga projektet. Om du är i mappen `cargo_test` kan du bara köra `cargo build` för att kompilera programmet och `cargo run` för att köra det.
-```shell
+```bash
 cargo build
 cargo run
 ```
@@ -534,7 +534,7 @@ cargo run
 Cargo bygger då programmet och kör det, vilket printar ut `Hello, world!` på terminalen.
 
 Efter att du byggt programmet ser ditt projekt ut något såhär
-```shell
+```
 ├── Cargo.lock  
 ├── Cargo.toml  
 ├── src  
@@ -553,7 +553,7 @@ Efter att du byggt programmet ser ditt projekt ut något såhär
 ```
 
 Det som är väsentligt här är filen `target/debug/cargo_test`. Det är ditt program! Du kan faktiskt köra den manuellt om du vill testa
-```shell
+```bash
 ./target/debug/cargo_test
 ```
 
@@ -561,7 +561,7 @@ Det som är väsentligt här är filen `target/debug/cargo_test`. Det är ditt p
 Rust kan bygga ditt program på lite olika sätt. Som standard är att programmet byggs i _debug_, vilket betyder att kompilatorn lägger till en del saker för att göra felsökning lite enklare. Det är därför ditt program hamnar i mappen `debug`.
 
 Om du en dag vill bygga en version av ditt program som ska användas kan du välja att bygga det i _release_ läget. Rust kommer då att optimera och göra programmet mindre.
-```shell
+```bash
 cargo build --release
 cargo run --release
 ```
@@ -588,7 +588,7 @@ Kör du nu `cargo build` kommer den börja att ladda ner regex craten från gith
 VS Code är en IDE skapad av Microsoft. Den är dock nu open-source. VS Code har bra support för att lägga till moduler, vilket låter en enkelt använda den för olika programmeringsspråk.
 
 ### VS Code installation - Manjaro
-```shell
+```bash
 sudo pacman -S vscode
 ```
 
@@ -629,7 +629,7 @@ Nu kommer du få ett rött sträck under `-1`. Om du hovrar musen över sträcke
 
 ### Kompilera och debugga i VS Code
 VS Code har en integrerad terminal i sig, vilken man kan använda för att manuellt bygga och köra ditt program. Går till `Terminal > New Terminal` för att få upp den. Det kommer öppna en terminal som befinner sig i workspace mappen. Testa att bygga och köra din kod i den.
-```shell
+```bash
 cargo build
 cargo run
 ```
@@ -678,23 +678,23 @@ För att komma över det första problemet behöver din kod _korskompileras_ (cr
 I rust kan du ganska enkelt installera en korskompilator med _rustup_. Det du gör är att installera ett annat _toolchain_.
 
 Börja med att skapa ett nytt projekt som vi nu kallar `embedded_test`. Förslagsvis kan du göra det i samma mapp som `cargo_test` ligger
-```shell
+```bash
 cargo new embedded_test
 cd embedded_test
 ```
 
 Sedan vill vi installera toolchainen som krävs för ARM processorn
-```shell
+```bash
 rustup target install thumbv7m-none-eabi
 ```
 
 För att sedan skriva till devboardens minne gör du det som heter att _flasha_ minnet. Du kan installera en cargo modul just för att göra detta.
-```shell
+```bash
 cargo install cargo-flash
 ```
 
 Nu behöver du specificera att det här projektet ska kompileras för en annan arkitektur. Detta gör du igenom att skapa en configfil. I mappen `embedded_test` kan du köra
-```shell
+```bash
 mkdir .cargo
 cd .cargo
 touch config.toml
@@ -787,7 +787,7 @@ pub fn exit() -> ! {
 }
 ```
 
-Notera att vi har lite extra grejer från det [[#Exempel 1 - Hello World|hello world exemplet]] vi gjorde för dator.
+Notera att vi har lite extra grejer från det [hello world exemplet](exempel-1-hello-world) vi gjorde för dator.
 
 Vi börjar med att stänga av några funktioner i rust. `#![no_main]` specificerar att ditt program **inte** ska starta från main, utan ska starta på ett annat embeddedställe. Sedan refererar vi till funktionen main som en startpunkt från vilken embeddedgrejerna ska starta din kod.
 
@@ -810,20 +810,20 @@ Kör du ett program på din dator kommer en ny process att startas, ditt program
 Din embeddedenhet däremot, kommer inte bara sluta köra kod efter att ditt program tar slut. Den kommer att fortsätta plocka instruktioner från minnet. Dessa är inte saker du har lagt där, utan kan vara vadsomhelst. Det vill vi inte att den ska göra, för då kan vad som helst hända. Därför har vi funktionen `exit` som kommer att sätta processorn i en evighetsloop. Vi lägger också till att den ska placera en breakpoint där, för om vi vill debugga.
 
 Du kan nu bygga din kod. Förutsatt att allt är gjort korrekt, kommer du inte få några error.
-```shell
+```bash
 cargo build
 ```
 
 ### Flasha din kod
 Nu när du lyckats bygga ditt projekt är det dags att flasha din kod till ditt devboard. För det behöver du containern `probe-run`
-```shell
+```bash
 cargo install probe-run
 ```
 
 Du kommer också behöva ett verktyg från _Nordic Semiconductors_ för att interagera med devboarden. Det heter `nrf5x-command-line-tools`
 
 #### NRF tools installation - Manjaro med yay
-```shell
+```bash
 yay nrf5x-command-line-tools
 ```
 
@@ -835,17 +835,17 @@ makepkg -si
 ```
 
 För att kunna flasha kod till ditt devboard måste det låsas upp. Det är därför vi behöver _NRF tools_. Kör kommandot
-```shell
+```bash
 nrfjprog --recover
 ```
 
 Nu när du låst upp ditt devboard och konfigurerat i `.cargo/config` att det som ska hända när du kör `cargo run` är att den ska använda `probe-run` för att flasha koden till ditt devboard, kan du nu köra koden
-```shell
+```bash
 cargo run
 ```
 
 Om allt gått som det ska bör det resultera i följande
-```shell
+```bash
    Finished dev [unoptimized + debuginfo] target(s) in 0.01s  
     Running `probe-run --chip nRF52840_xxAA target/thumbv7em-none-eabi/debug/embedded_test`  
 (HOST) INFO  flashing program (3 pages / 12.00 KiB)  
