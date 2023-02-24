@@ -23,3 +23,7 @@ extra_javascript:
 
 theme:
   name: utbult-design
+  logo_light: img/UtbultDesign_White.svg
+  logo_dark: img/UtbultDesign_Black.svg
+  favicon: img/UtbultDesign_Small.png
+  
