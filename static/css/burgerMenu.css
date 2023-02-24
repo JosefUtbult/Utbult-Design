@@ -1,0 +1,211 @@
+:root {
+    --burger-menu-padding: 8px;
+}
+
+#burger-menu {
+    position: fixed;
+    top: 0;
+    left: calc(100% - var(--header-icon-height) - var(--header-icon-margin));
+    width: calc(var(--header-icon-height) + var(--header-icon-margin));
+    height: var(--header-height);
+    z-index: 3;
+    display: flex;
+    flex-direction: row;
+}
+
+#burger-menu {
+    transition: background-color var(--hover-transition),
+        width var(--burger-menu-open),
+        left var(--burger-menu-open);
+}
+
+.theme-transition body #burger-menu {
+    transition: background-color var(--theme-transition);
+}
+
+#burger-menu-button-container button{
+    width: calc(var(--header-icon-height));
+    height: auto;
+    margin-top: var(--header-icon-margin);
+    margin-right: var(--header-icon-margin);
+    padding: 0;
+    border: none;
+}
+
+#burger-menu-content {
+    width: calc(100% - var(--header-icon-height) - var(--header-icon-margin));
+    height: 100vh;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#burger-menu-content {
+    transition: width var(--burger-menu-open),
+        left var(--burger-menu-open);
+}
+
+.theme-transition body #burger-menu-content {
+    transition: background-color var(--theme-transition);
+}
+
+.light body #burger-menu-content {
+    background-color: var(--secondary-light);
+    color: var(--text-light);
+}
+
+.dark body #burger-menu-content {
+    background-color: var(--secondary-dark);
+    color: var(--text-dark);
+}
+
+#burger-menu.open {
+    left: calc(100% - var(--header-icon-height) - var(--header-icon-margin) - var(--burger-menu-width));
+    width: calc(var(--header-icon-height) + var(--header-icon-margin) + var(--burger-menu-width));
+}
+
+#burger-menu-content h1,
+#burger-menu-content h2,
+#burger-menu-content h3,
+#burger-menu-content h4,
+#burger-menu-content h5,
+#burger-menu-content h6,
+#burger-menu-content p,
+#burger-menu-content a,
+#burger-menu-content button {
+    color: inherit;
+    font-family: UbuntuMono;
+    margin: 0;
+}
+
+#burger-menu-content h1 {
+    font-size: 18px;
+    text-align: left;
+}
+
+#burger-menu-content h2 {
+    font-size: 16px;
+}
+
+#burger-menu-content h3 {
+    font-size: 14px;
+}
+
+#burger-menu-content h4 {
+    font-size: 12px;
+}
+
+#burger-menu-content h5 {
+    font-size: 10px;
+}
+
+#burger-menu-content h6 {
+    font-size: 9px;
+}
+
+#burger-menu-content p {
+    font-size: 8px;
+}
+
+#burger-menu-content a,
+#burger-menu-content button {
+    font-size: large;
+    text-decoration: none;
+}
+
+#burger-menu-content button {
+    border: none;
+    padding: 0;
+}
+
+#burger-menu-content a:link,
+#burger-menu-content a:visited,
+#burger-menu-content a:hover,
+#burger-menu-content a:active {
+    text-decoration: inherit;
+}
+
+#burger-menu-content > div {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#burger-menu-content .active a {
+    text-decoration: underline;
+}
+
+#burger-menu-content ul::marker,
+#burger-menu-content li::marker {
+    content: "";
+}
+
+#burger-menu-content ul {
+    overflow-y: hidden;
+    margin: 0;
+    padding-left: 10px;
+    transition: height var(--burger-menu-open);
+}
+
+#burger-menu-content ul.hidden {
+    height: 0;
+}
+
+#burger-menu-content li {
+    margin-top: var(--burger-menu-padding);
+    margin-bottom: 0;
+}
+
+#burger-menu-content hr {
+    width: 100%;
+}
+
+.light body #burger-menu-content hr {
+    border-color: var(--text-light);
+}
+
+.dark body #burger-menu-content hr {
+    border-color: var(--text-dark);
+}
+
+.theme-transition body #burger-menu-content hr {
+    transition: border-color var(--theme-transition);
+}
+
+#burger-menu-content .burger-heading-container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#burger-menu-content .burger-heading-container > *:first-child {
+    flex-grow: 1;
+}
+
+#burger-menu-content .burger-heading-container div {
+    width: 10px;
+    height: 10px;
+}
+
+#burger-menu-content .burger-heading-container div > button {
+    width: 100%;
+    height: 100%;
+}
+
+#burger-menu-content .burger-heading-container button svg {
+    width: 100%;
+    position: relative;
+    /* TODO: Figure out why the auto placement breakes */
+    left: -2px;
+    top: -5px;
+}
+
+#toc ul,
+#nav ul {
+    border-left: solid 1px;
+    border-left-color: rgba(126, 126, 126, 0.2)
+}
+
+#toc > ul,
+#nav > ul {
+    border-left: none;
+}

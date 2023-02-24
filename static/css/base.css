@@ -1,0 +1,241 @@
+:root {
+    /* Light theme */
+    --text-light: #000000;
+    --background-light: #FFFFFF;
+
+    --primary-light: #48c73b;
+    --primary-light-detail: #3ea133;
+
+    --secondary-light: #f1bf52;
+    --secondary-light-detail: #f0b63b;
+
+    --disabled-light: rgb(148, 148, 148);
+    --disabled-light-detail: rgb(68, 68, 68);
+
+    /* Dark theme */
+    --text-dark: #FFFFFF;
+    --background-dark: #2B2B2B;
+    
+    --primary-dark: #f3b252;
+    --primary-dark-detail: #f5a329;
+    
+    --secondary-dark: rgb(131, 58, 131);
+    --secondary-dark-detail: rgb(148, 56, 148);
+
+    --disabled-dark: #353535;
+    --disabled-dark-detail: rgb(139, 139, 139);
+
+    /* Sizes */
+    --border: 1px solid;
+    --blockquote-margin: 20px;
+
+    /* Transitions */
+    --theme-transition: 400ms ease-in-out;
+    --burger-menu-open: 200ms ease-in-out;
+    --hover-transition: 100ms ease-in;
+    /* --burger-menu-open: 2s ease-in-out; */
+
+    /* Sizes */
+    --header-height: 70px;
+    --header-icon-height: 40px;
+    --header-icon-margin: 6px;
+    --burger-menu-width: 400px;
+}
+
+.dark body {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+.light body {
+    background-color: var(--background-light);
+    color: var(--text-light);
+}
+
+.theme-transition body {
+    -webkit-transition: background-color var(--theme-transition);
+    transition: background-color var(--theme-transition);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Oswald;
+}
+
+h1 {
+    text-align: center;
+    font-size: 5rem;
+}
+
+* + h1 {
+    padding-top: 1.5em;
+}
+
+* + h2 {
+    padding-top: 1em;
+}
+
+* + h3 {
+    padding-top: .6em;
+}
+
+* + h4 {
+    padding-top: .4em;
+}
+
+
+* + h5 {
+    padding-top: .3em;
+}
+
+#content h1 {
+    border-bottom: var(--border);
+    padding-bottom: .1em;
+}
+
+.light body h1 {
+    border-color: var(--text-light);
+}
+
+.dark body h1 {
+    border-color: var(--text-dark);
+}
+
+.theme-transition body h1,
+.theme-transition body h2,
+.theme-transition body h3,
+.theme-transition body h4,
+.theme-transition body h5,
+.theme-transition body h6,
+.theme-transition body svg,
+.theme-transition body p,
+.theme-transition body a {
+    -webkit-transition: color var(--theme-transition);
+    transition: color var(--theme-transition);
+}
+
+p,
+a {
+    font-family: Raleway;
+}
+
+a {
+    text-decoration: underline;
+    color: inherit;
+    -webkit-transition: color var(--hover-transition);
+    transition: color var(--hover-transition);
+}
+
+.dark body a:hover {
+    color: var(--secondary-dark)
+}
+
+.light body a:hover {
+    color: var(--secondary-light)
+}
+
+blockquote {
+    margin: var(--blockquote-margin) var(--blockquote-margin) var(--blockquote-margin) 0;
+    padding-left: var(--blockquote-margin);
+    border-left: var(--border); 
+}
+
+blockquote p {
+    font-family: UbuntuMono;
+    font-size: 1.1em;
+}
+
+.dark body blockquote {
+    border-color: var(--primary-dark);
+}
+
+.light body blockquote {
+    border-color: var(--primary-light);
+}
+
+.theme-transition body blockquote {
+    transition: border-color var(--theme-transition);
+}
+
+.btn {
+    -webkit-transition: background-color var(--hover-transition),
+        border-color var(--hover-transition),
+        color var(--hover-transition);
+    transition: background-color var(--hover-transition),
+        border-color var(--hover-transition),
+        color var(--hover-transition);
+}
+
+.theme-transition body .btn {
+    -webkit-transition: background-color var(--theme-transition),
+        border-color var(--theme-transition),
+        color var(--theme-transition);
+    transition: background-color var(--theme-transition),
+        border-color var(--theme-transition),
+        color var(--theme-transition);
+}
+
+.dark body .btn {
+    border-color: var(--primary-dark-detail);
+    background-color: var(--primary-dark);
+    color: var(--background-dark);
+}
+
+.light body .btn {
+    border-color: var(--primary-light);
+    background-color: var(--primary-light);
+    color: var(--background-light);
+}
+
+.dark body .btn:hover {
+    border-color: var(--primary-dark-detail);
+    background-color: var(--primary-dark-detail);
+    color: var(--text-dark);
+}
+
+.light body .btn:hover {
+    border-color: var(--primary-light);
+    background-color: var(--primary-light-detail);
+    color: var(--text-light);
+}
+
+@media (max-width: 1610px) {
+    .header-margin {
+        height: var(--header-height);
+    }
+}
+
+.content-container {
+    min-height: 100vh;
+}
+
+.content-container img {
+    max-width: 100%;
+}
+
+.content-container img[align] {
+    max-width: 50%;
+    
+}
+.content-container img[align=right] {
+    margin-left: 20px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th,
+td {
+    padding: 4px 6px;
+}
+
+th[align=right],
+td[align=right] {
+    text-align: right;
+}

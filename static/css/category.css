@@ -1,0 +1,11 @@
+.category-instance {
+    display: flex;
+}
+
+.category-instance > * {
+    width: 50%;
+}
+
+.category-instance img {
+    width: 100%;
+}

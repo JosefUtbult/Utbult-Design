@@ -1,0 +1,246 @@
+
+.theme-transition body .hljs,
+.theme-transition body code,
+.theme-transition body .hljs-subst,
+.theme-transition body .hljs-comment,
+.theme-transition body .hljs-attr,
+.theme-transition body .hljs-doctag,
+.theme-transition body .hljs-keyword,
+.theme-transition body .hljs-meta .dark body .hljs-keyword,
+.theme-transition body .hljs-section,
+.theme-transition body .hljs-selector-tag,
+.theme-transition body .hljs-attribute,
+.theme-transition body .hljs-name,
+.theme-transition body .hljs-number,
+.theme-transition body .hljs-quote,
+.theme-transition body .hljs-selector-id,
+.theme-transition body .hljs-template-tag,
+.theme-transition body .hljs-type,
+.theme-transition body .hljs-selector-class,
+.theme-transition body .hljs-link,
+.theme-transition body .hljs-regexp,
+.theme-transition body .hljs-selector-attr,
+.theme-transition body .hljs-string,
+.theme-transition body .hljs-symbol,
+.theme-transition body .hljs-template-variable,
+.theme-transition body .hljs-variable,
+.theme-transition body .hljs-meta,
+.theme-transition body .hljs-selector-pseudo,
+.theme-transition body .hljs-built_in,
+.theme-transition body .hljs-literal,
+.theme-transition body .hljs-title,
+.theme-transition body .hljs-bullet,
+.theme-transition body .hljs-code,
+.theme-transition body .hljs-meta .hljs-string
+.theme-transition body .hljs-deletion,
+.theme-transition body .hljs-addition {
+	transition: color var(--theme-transition),
+		background-color var(--theme-transition);
+}
+
+pre code.light body .hljs,
+pre code.dark body .hljs {
+	display: block;
+	overflow-x: auto;
+	padding: 1em
+}
+
+code.light body .hljs,
+code.dark body .hljs {
+	padding: 3px 5px
+}
+
+.hljs-emphasis {
+	font-style: italic
+}
+
+.hljs-strong {
+	font-weight: 700
+}
+
+/* Darkmode */
+/*!
+	Theme: StackOverflow Dark
+	Description: Dark theme as used on stackoverflow.com
+	Author: stackoverflow.com
+	Maintainer: @Hirse
+	Website: https://github.com/StackExchange/Stacks
+	License: MIT
+	Updated: 2021-05-15
+
+	Updated for @stackoverflow/stacks v0.64.0
+	Code Blocks: /blob/v0.64.0/lib/css/components/_stacks-code-blocks.less
+	Colors: /blob/v0.64.0/lib/css/exports/_stacks-constants-colors.less
+*/
+.dark body .hljs,
+.dark body code {
+	color: #fff;
+    background: #23241f;
+}
+
+.dark body .hljs-subst {
+	color: #fff
+}
+
+.dark body .hljs-comment {
+	color: #999
+}
+
+.dark body .hljs-attr,
+.dark body .hljs-doctag,
+.dark body .hljs-keyword,
+.dark body .hljs-meta .dark body .hljs-keyword,
+.dark body .hljs-section,
+.dark body .hljs-selector-tag {
+	color: #88aece
+}
+
+.dark body .hljs-attribute {
+	color: #c59bc1
+}
+
+.dark body .hljs-name,
+.dark body .hljs-number,
+.dark body .hljs-quote,
+.dark body .hljs-selector-id,
+.dark body .hljs-template-tag,
+.dark body .hljs-type {
+	color: #f08d49
+}
+
+.dark body .hljs-selector-class {
+	color: #88aece
+}
+
+.dark body .hljs-link,
+.dark body .hljs-regexp,
+.dark body .hljs-selector-attr,
+.dark body .hljs-string,
+.dark body .hljs-symbol,
+.dark body .hljs-template-variable,
+.dark body .hljs-variable {
+	color: #b5bd68
+}
+
+.dark body .hljs-meta,
+.dark body .hljs-selector-pseudo {
+	color: #88aece
+}
+
+.dark body .hljs-built_in,
+.dark body .hljs-literal,
+.dark body .hljs-title {
+	color: #f08d49
+}
+
+.dark body .hljs-bullet,
+.dark body .hljs-code {
+	color: #ccc
+}
+
+.dark body .hljs-meta .hljs-string {
+	color: #b5bd68
+}
+
+.dark body .hljs-deletion {
+	color: #de7176
+}
+
+.dark body .hljs-addition {
+	color: #76c490
+}
+
+
+/* Lightmode */
+
+/*!
+	Theme: StackOverflow Light
+	Description: Light theme as used on stackoverflow.com
+	Author: stackoverflow.com
+	Maintainer: @Hirse
+	Website: https://github.com/StackExchange/Stacks
+	License: MIT
+	Updated: 2021-05-15
+
+	Updated for @stackoverflow/stacks v0.64.0
+	Code Blocks: /blob/v0.64.0/lib/css/components/_stacks-code-blocks.less
+	Colors: /blob/v0.64.0/lib/css/exports/_stacks-constants-colors.less
+*/
+.light body .hljs,
+.light body code {
+	color: #2f3337;
+	background: #fdfdfc
+}
+
+.light body .hljs-subst {
+	color: #2f3337
+}
+
+.light body .hljs-comment {
+	color: #656e77
+}
+
+.light body .hljs-attr,
+.light body .hljs-doctag,
+.light body .hljs-keyword,
+.light body .hljs-meta .light body .hljs-keyword,
+.light body .hljs-section,
+.light body .hljs-selector-tag {
+	color: #015692
+}
+
+.light body .hljs-attribute {
+	color: #803378
+}
+
+.light body .hljs-name,
+.light body .hljs-number,
+.light body .hljs-quote,
+.light body .hljs-selector-id,
+.light body .hljs-template-tag,
+.light body .hljs-type {
+	color: #b75501
+}
+
+.light body .hljs-selector-class {
+	color: #015692
+}
+
+.light body .hljs-link,
+.light body .hljs-regexp,
+.light body .hljs-selector-attr,
+.light body .hljs-string,
+.light body .hljs-symbol,
+.light body .hljs-template-variable,
+.light body .hljs-variable {
+	color: #54790d
+}
+
+.light body .hljs-meta,
+.light body .hljs-selector-pseudo {
+	color: #015692
+}
+
+.light body .hljs-built_in,
+.light body .hljs-literal,
+.light body .hljs-title {
+	color: #b75501
+}
+
+.light body .hljs-bullet,
+.light body .hljs-code {
+	color: #535a60
+}
+
+.light body .hljs-meta .light body .hljs-string {
+	color: #54790d
+}
+
+.light body .hljs-deletion {
+	color: #c02d2e
+}
+
+.light body .hljs-addition {
+	color: #2f6f44
+}
+
