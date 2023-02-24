@@ -504,7 +504,7 @@ Cargo är ganska likt pip om du använt det. Skillnaden är att cargo också lö
 ### Rustup vs Cargo
 Här ser du vad som är skillnaden mellan rustup och cargo
 
-![](img/EmbeddedRust/RustupAndCargo.svg}
+![](img/EmbeddedRust/RustupAndCargo.svg)
 
 Här är en till guide som också går igenom hur man kommer igång med rust [Meduim: Rust - A Beginner Cheat Sheet](https://medium.com/codex/rust-a-beginner-cheat-sheet-8fd7b0ce49de)
 
@@ -700,21 +700,24 @@ cd .cargo
 touch config.toml
 ```
 
-Sedan kan du redigera din configfil. Mappen `.cargo` är en dold mapp, så det kan vara så att du måste specificera att du vill se dolda filer i din filhanterare för att kunna gå in i den. I filen `config` kan du lägga till
+Sedan kan du redigera din configfil. Mappen `.cargo` är en dold mapp, så det kan vara så att du måste specificera att du vill se dolda filer i din filhanterare för att 
+kunna gå in i den. I filen `config` kan du lägga till
 ```toml
-# Byggargument  
-[build]  
-# Då att vårt target, alltså devboardet, är en ARM    
-# processor vill vi att projektet ska korskompileras    
-# till ARM  
-target = "thumbv7m-none-eabi"  
-  
-# Lite specifikationer för vilken runner som ska användas  
-[target.'cfg(all(target_arch = "arm", target_os = "none"))']  
-runner = "probe-run --chip nRF52840_xxAA  --defmt"  
-rustflags = [  
-       "-C", "link-arg=-Tlink.x",  
-       "-C", "link-arg=-Tdefmt.x",  
+# Byggargument
+[build]
+# Då att vårt target, alltså devboardet, är en ARM 
+# processor vill vi att projektet ska korskompileras 
+# till ARM
+target = "thumbv7em-none-eabi"
+
+# Lite specifikationer för vilken runner som ska användas när vi kör cargo run
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = "probe-run --chip nRF52840_xxAA"
+rustflags = [
+	# Adress specifikationer
+	"-C", "link-arg=--nmagic",
+	# Linker
+	"-C", "link-arg=-Tlink.x",
 ]
 ```
 
@@ -722,28 +725,47 @@ Efter det behöver vi ett _linker skript_. Det skriptet specificerar hur minnet 
 ```
 MEMORY
 {
-	/* Flashminnet startar på address 0x80000000 och är storleken 64kB*/
-	FLASH : ORIGIN = 0x08000000, LENGTH = 64K
+	/* Flashminnet startar på address 0x00000000 och är storleken 64kB*/
+	FLASH : ORIGIN = 0x00000000, LENGTH = 1M
 	/* Ramminnet startar på address 0x20000000 och är storleken 20kB*/
-	RAM : ORIGIN = 0x20000000, LENGTH = 20K
+	RAM : ORIGIN = 0x20000000, LENGTH = 256K
 }
 ```
 
 Nu behöver du ändra i filen `Cargo.toml` för att specificera hur programmet ska byggas. Öppna den och lägg till efter `[dependencies]`
 ```toml
+[package]
+name = "embedded_test"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
 # Containers som krävs för att bygga projektet
 [dependencies]
-cortex-m = { version = "^0.7.6", features = ["inline-asm"] }    # Tillgång till generiska ARMgrejer, samt att expli  
-cit kunna köra assemblyinstruktioner  
-cortex-m-rt = "0.6.12" # Mer ARM grejer som specificerar hur programmet ska startas  
-defmt = "0.1"  
-defmt-rtt = "0.1"  
-nrf52840-hal = { version = "0.16.0", features = ["rt"] }        # HAL interface som fungerar som mellan lager för d in kod och NRF52840 processorn, så du inte behöver lista ut vilka register som gör vad  
-  
-# Specifikationer om hur programmet ska kompileras för release mode  
-[profile.release]  
-opt-level = 'z' # Maximera optimering för storlek, då vi inte längre har så mycket minne  
-lto = true      # Link-time-optimizations som kommer hjälpa mer med optimering
+# Tillgång till generiska ARMgrejer, samt att explicit kunna köra assemblyinstruktioner
+cortex-m = { version = "^0.7.6", features = ["inline-asm"] }
+
+# Mer ARM grejer som specificerar hur programmet ska startas
+cortex-m-rt = "0.6.12"
+
+# Tillåt printing i embedded kod
+rtt-target = { version = "0.3.0", features = ["cortex-m"] }
+
+# HAL interface som fungerar som mellan lager för din kod och NRF52840 processorn, så du 
+# inte behöver lista ut vilka register som gör vad
+nrf52840-hal = { version = "0.16.0", features = ["rt"] }
+
+# Panic handling för när din kod kraschar
+panic-rtt-target = { version = "0.1.2", features = ["cortex-m"] } 
+
+# Specifikationer om hur programmet ska kompileras för release mode
+[profile.release]
+# Maximera optimering för storlek, då vi inte längre har så mycket minne
+opt-level = 'z'
+
+# Link-time-optimizations som kommer hjälpa mer med optimering
+lto = true
 ```
 
 ### Embedded kod
@@ -857,3 +879,313 @@ Hello, World!
 ```
 Ditt devboard kör alltså hello world koden och skickar hello world till din dator, som sedan printar det i din terminal.
 
+## Debugging i embedded rust
+Att kunna printa saker räcker ofta för att testa enkla saker i ett program, men ibland kan det krävas lite mer kontroll över hur en embeddedplattform körs. I de fallen vill man
+ha en debugger för att kunna stoppa körningen av kod och kolla på alla variabler. Problemet med det sätt vi satt upp exempelprojektet nu är att `probe-run` inte har den 
+funktionaliteten. I det här exemplet kommer vi därför sätta upp en `gdb` instans som kör på din dator och komunicerar med embeddedenheten. Följande exempel följer lite vagt 
+[ferrous systems - Graphical Debugging with Embedded Rust](https://ferrous-systems.com/blog/graphical-embedded-rust-debugging/)
+
+Till att börja med kan du skapa ett nytt projekt i samma mapp som `embedded_test` som heter `gdb_test`.
+```bash
+cargo new gdb_test
+cd gdb_test
+```
+
+Kopiera över lite filer från `embedded_test`
+```bash
+cp ../embedded_test/Cargo.toml ./Cargo.toml
+cp ../embedded_test/src/main.rs src/main.rs
+cp ../embedded_test/memory.x memory.x
+cp -r ../embedded_test/.cargo ./.cargo
+```
+
+Redigera `Cargo.toml` och byt variabeln `name` från `"embedded_test"` till `"gdb_test"`.
+
+Nu kan vi börja med att sätta upp debuggern. Exakt hur allt fungerar är lite komplicerat, men i grunden 
+behöver vi tre komponenter.
+
+- Cargo
+- GDB
+- OpenOCD
+
+_Cargo_ har vi redan använt för att specificera hur vi ska kompilera projektet och vad som ska hända när vi 
+kör `cargo run`.
+
+### GDB
+
+_GDB_ är det som kallas en _debugger_. Den ansvarar, på samma sätt som probe-run, för att skicka ett program
+som cargo har kompilerat till _OpenOCD_ och sedan för att specificera vart programmet ska stanna. GDB låter
+oss också titta på vad som händer på enheten från din laptop.
+
+GDB översätter i princip de instruktionerna som körs i ett program till läsbar kod. I vanliga fall kommer
+dessa instruktioner vara i maskinspråket `X86`, vilket är vad din dator kör. Men det kommer inte fungera
+för kod som körs på det inbyggda systemet, som är byggt med en `ARM` arkitektur. På samma sätt 
+[som vi tidigare](#embedded-rust) behövde en korskompilator, behöver vi nu en GDB version som kan köras på
+din dator men läser ARM kod. För detta använder vi GDB versionen `arm-none-eabi-gdb`.
+
+#### GDB installation - Manjaro med Pacman
+```bash
+sudo pacman -S arm-none-eabi-gdb
+```
+
+#### Konfigurera GDB
+Vi kan konfigurera GDB med en konfigfil.
+
+Skapa filen `debug.gdb` och lägg till
+```
+# Koppla till GDB servern som kör lokalt på port 3333 (openocd)
+target remote :3333
+
+# Flasha enheten med det program som specificerats i argumentet till gdb
+load
+
+# Resetta enheten (openocd)
+monitor reset halt
+
+# Starta exekvering av programmet
+continue
+```
+
+### OpenOCD
+
+_OpenOCD_ är det som kallas en _embedded debug server_. Det är som ett mellanlager mellan GDB och enheten som
+koden körs på. Man kan säga att den ansvarar för att ta emot program och instruktioner från GDB och sedan 
+komunicera dessa till enheten. När vi kör OpenOCD startar den en lokal server på din dator som GDB kan koppla
+upp sig till via port 3333.
+
+#### OpenOCD installation - Manjaro med Pacman
+```bash
+sudo pacman -S openocd
+```
+
+#### Konfigurera OpenOCD
+
+Skapa filen `debug_openocd.cfg` och lägg till
+```
+# OpenOCD konfiguration. Specificerar att OpenOCD ska hitta en jlink interface till en nrf52 enhet
+# och skicka data över den
+
+source [find interface/jlink.cfg]
+
+transport select swd
+
+source [find target/nrf52.cfg]
+```
+
+### Rust runners
+En _runner_ i rust syftar på det komandot som ska köras när en användare kör `cargo run`. I föregående 
+exemplet så använde vi runnern som heter `probe-run`. Den är enkel att sätta upp, men låter oss inte 
+debugga en enhet riktigt, utan endast printa från den.
+
+Vi vill nu istället använda ett komando för att köra GDB med konfigfilen som vi just skapat. Redigera
+`.cargo/config.toml` och ersätt raden
+```toml
+runner = "probe-run --chip nRF52840_xxAA"
+```
+
+med
+```toml
+runner = "arm-none-eabi-gdb -q -x debug.gdb"
+```
+
+### Första testet
+
+Nu är alla bitar på plats för att börja testa att debugga. Vi gör första exemplet i en terminal, men
+senare ska vi integrera allt med VSCode. Därför ser det lite omständigt ut nu.
+
+Börja med att starta en terminal, gå till projektmappen `gdb_test` och kör
+```bash
+openocd -f debug_openocd.cfg
+```
+
+Flaggan `-f` specificerar att OpenOCD ska använda filen `debug_openocd.cfg` som vi skapade tidigare.
+
+Om allt gått som det ska, bör OpenOCD printa ut
+```
+Open On-Chip Debugger 0.11.0
+Licensed under GNU GPL v2
+For bug reports, read
+        http://openocd.org/doc/doxygen/bugs.html
+Info : Listening on port 6666 for tcl connections
+Info : Listening on port 4444 for telnet connections
+Info : J-Link OB-nRF5340-NordicSemi compiled Nov  7 2022 16:22:01
+Info : Hardware version: 1.00
+Info : VTarget = 3.300 V
+Info : clock speed 1000 kHz
+Info : SWD DPIDR 0x2ba01477
+Info : nrf52.cpu: hardware has 6 breakpoints, 4 watchpoints
+Info : starting gdb server for nrf52.cpu on 3333
+Info : Listening on port 3333 for gdb connections
+```
+
+Allt detta betyder att OpenOCD hittat en `OB-nRF5340-NordicSemi` enhet över ett `J-Link` interface.
+Sedan startar den GDB servern och väntar på att en GDB instans ska koppla upp sig.
+
+Öppna en annan terminal, gå till projektmappen `gdb_test` och kör
+```bash
+cargo run
+```
+
+Den kommer printa ut att den kör kommandot `arm-none-eabi-gdb -q -x debug.gdb target/thumbv7em-none-eabi/debug/gdb_test`, vilket är den runnern vi specificerat tidigare. En GDB instans startas och printar ut följande
+```gdb
+Reading symbols from target/thumbv7em-none-eabi/debug/gdb_test...
+cortex_m::asm::inline::__bkpt ()
+    at /home/josef/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.7.6/src/../asm/inline.rs:14
+14          asm!("bkpt", options(nomem, nostack, preserves_flags));
+Loading section .vector_table, size 0x100 lma 0x0
+Loading section .text, size 0x2030 lma 0x100
+Loading section .rodata, size 0x680 lma 0x2130
+Start address 0x00000100, load size 10160
+Transfer rate: 15 KB/sec, 3386 bytes/write.
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x00000100 msp: 0x20040000
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+gdb_test::exit () at src/main.rs:34
+34              cortex_m::asm::bkpt();  
+(gdb)
+```
+
+Det den säger i princip är att den kopplar ihop sig till OpenOCD instansen, resetar enheten som OpenOCD är
+kopplad till och startar programmet. Sedan stoppar den när den kommer fram till rad 34 i funktionen `exit`. 
+Går vi tillbaks till [hello world koden](embedded-kod) som vi skrev tidigare och kollar på funktionen `exit`
+kan vi faktiskt se där varför: Exit kallar på en assemblyinstruktion vid namn `bkpt` som står för _breakpoint_.
+Det syftar på att en debugger som kommer till den instruktionen ska stanna programmet för att man ska kunna se 
+på koden. Du har nu lyckats debugga din kod!
+
+Om du går tillbaks till terminalen där du kör OpenOCD så ska den ha printat ut lite mer.
+```
+Info : accepting 'gdb' connection on tcp/3333
+Info : nRF52840-xxAA(build code: F0) 1024kB Flash, 256kB RAM
+undefined debug reason 8 - target needs reset
+Warn : Prefer GDB command "target extended-remote 3333" instead of "target remote 3333"
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x00000100 msp: 0x20040000
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x00000100 msp: 0x20040000
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x00000100 msp: 0x20040000
+```
+
+Där står det att en GDB instans har kopplat till servern och skickat över ett program som ska till devboardet. 
+OpenOCD programmerar devboardet och startar programmet, tills devboardet kommer till en breakpoint.
+
+Längst ner i GDB terminalen ser du att det står `(gdb)` och att text som du skriver in i terminalen dyker upp där. 
+Det syftar på att du är i en GDB konsol, där du kan integrera med körningen av programmet. 
+Vi ska nu testa att lägga till en egen breakpoint och se om vi kan få enheten att stanna där. 
+Kör följande komandon i GDB konsollen
+
+Lägg till en breakpoint på rad 19 i programmet (på samma rad som rprintln)
+```gdb
+break 19
+```
+
+Starta om enheten så att det kör från början av programmet igen
+```gdb
+monitor reset init
+```
+
+Kör programmet
+```
+continue
+```
+
+Nu bör konsollen visa att du hamnat på en breakpoint på rad 19
+```gdb
+Breakpoint 1, gdb_test::__cortex_m_rt_main () at src/main.rs:19
+19          rprintln!("Hello, World!");
+```
+
+Snyggt. Nu har du själv laggt en breakpoint i programmet.
+
+Men frågan är då, hur ser vi vad som händer på enheten när den stannat? Det enklaste sättet är att använda GDBs
+"grafiska" läge som heter _tui_. Detta får man igång igenom att skriva
+```
+tui enable
+```
+
+Nu bör du få upp något som ser ut såhär
+![](img/EmbeddedRust/GDB_TUI.png)
+
+Här är din kod. GDB markerar också vart någonstans som programmet har stannat. Du kan testa att be GDB köra en rad till och sedan stanna igen igenom att skriva
+```gdb
+next
+```
+
+Nu bör GDB markera nästa rad i din mainfil. Testa nu att fortsätta köra programmet
+tills nästa breakpoint
+```gdb
+continue
+```
+
+Och du kommer tillbaks till exit funktionen. Vill du avsluda GDB kan du köra
+```gdb
+exit
+```
+
+Den kommer att påpeka att programmet fortfarande körs, men låter dig avsluta om du 
+trycker på `y`.
+
+### Användning av GDB
+Tyvärr är GDB i sig själv inte såpass intuitivt att det är enkelt att börja med. Man
+kan sätta breakpoints och titta på variablers värden i GDB konsollen. Men anledningen
+till att jag inte går djupare i det är för att vi senare ska koppla ihop GDB med
+VSCode, för att kunna integrera med GDB därifrån. Det kommer att vara lite enklare,
+men jag menar att det kan vara värt gå igenom hur hur GDB själv funkar för att få
+en klarare bild över vad som sker i varje steg.
+
+## Embedded Rust i VSCode
+Nästa steg är att konfigurera VSCode så vi enkelt kan bygga vårt projekt och köra det.
+
+Öppna VSCode och öppna projektet `gdb_test` (`File > Open Folder`). Till att börja med kan du gå in i mappen `src` och öppna mainfilen. 
+Den kommer att ge dig ett par errors, men de kan du ignorera just nu. Börja med att öppna en ny terminal (`Terminal > New Terminal`) och kör
+```bash
+cargo run
+```
+
+Det borde funka som tidigare. Den programerar ditt devboard och printar "Hello, World!". 
+
+Vi vill dock kunna programera enheten med "Run and Debug" knappen i VSCode. 
+
+Först behöver vi en _SVD_ fil, som specificerar för OpenOCD hur den ska tolka specifika register på vår enhet. Som tur är har 
+Nordic Semiconductors en SVD fil på Github. Klona deras `nrfx` repo i samma mapp som exempelna du gjort, och kopiera över filen 
+` nrfx/mdk/nrf52840.svd` till mappen `gdb_test`.
+```bash
+git clone git@github.com:NordicSemiconductor/nrfx.git
+cp  nrfx/mdk/nrf52840.svd gdb_test
+```
+
+Sen behöver vi också ett plugin till VSCode som heter _Cortex-Debug_. Installera det på samma sätt som du installerade [rust-analyzer](#rust-plugin).
+[](img/EmbeddedRust/VSCodeCortexDebug.png)
+
+[ElectroRules - VSCode Cortex-Debug Launch Configurations](https://www.electrorules.com/vscode-cortex-debug-launch-configurations/)
+
+Nu ska du sätta upp din `launch.json` fil. Följ samma steg [vi gjorde tidigare](#kompilera-och-debugga-i-vs-code) 
+för att sätta upp Run and Debug. Det ger dig en `launch.json` fil. Vi vill dock ändra den så att istället för att koden körs lokalt, körs den
+med GDB på embeddedenheten. Byt ut allt mellan måsvingarna från
+```json
+{
+	"type": "lldb",
+	"request": "launch",
+	"name": "Debug",
+	"program": "${workspaceFolder}/<executable file>",
+	"args": [],
+	"cwd": "${workspaceFolder}"
+}
+```
+
+Till
+
+```json
+{
+	"name": "Debug (OpenOCD)",
+	"type": "cortex-debug",
+	"request": "launch",
+	"cwd": "${workspaceRoot}",
+	"executable": "${workspaceFolder}/target/thumbv7em-none-eabi/debug/gdb_test",
+	"servertype": "openocd",
+	"runToEntryPoint": "main",
+	"configFiles": ["debug_openocd.cfg"],
+	"svdFile": "${workspaceFolder}/nrf52840.svd"
+}
+```

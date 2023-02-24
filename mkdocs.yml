@@ -1,7 +1,6 @@
 site_name: UTBULT DESIGN
 
 plugins:
-  - jinja2
   - translations:
       default_language: sv
       languages:
@@ -11,9 +10,6 @@ plugins:
 markdown_extensions:
   - toc
   - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - def_list
   - attr_list
   - pymdownx.arithmatex:
       generic: true
@@ -24,10 +20,6 @@ extra_javascript:
   - javascript/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
-hooks:
-  - hooks/lang.py
-  - hooks/category.py
 
 theme:
   name: utbult-design
