@@ -72,6 +72,24 @@ Men jag beslutade mig tillslut för en [Marcus Miller M2 TBK 2nd Gen](https://ww
 
 ## Montera preamp
 
+## Strängar
+Jag vill stämma basen i D standard (DGCF). För att få till detta resonerade jag att jag skulle kunna köpa de grövsta strängarna jag kunde hitta för 4 strängad bas, vilket var [Daddario EPS230 strängar](https://www.thomann.de/gb/daddario_eps_230_ebasssaiten.htm). De har en E sträng som är 0.110 tum tjock, vilket jag först tänkte skulle kunna stämma till ett D.
+
+Men när jag stämde ner strängarna till D standard, lät allting skit. En hel del av klangen i strängarna försvann, och de blev för lösa för att kunna använda med någon användbar stränghöjd.
+
+Men jag insåg en sak; för min spelstil passar grova strängar ganska bra. Jag spelar ganska hårt, och de grova strängarna gav mer spänst vilket jag gillar.
+
+Min nästa teori var följande. Kan jag ta ett sätt lätta 5 strängad bass strängar, och stämma upp de lägsta till D för att få samma spänst som i EPS230 strängarna?
+
+Här är en graf för vilken tjocklek Daddario strängarna har i relation till frekvensen av tonen den är gjord för (blått). Med hjälp av en curve fit funktion kan vi få en ekvation som följer de strängar jag har (grön). Sedan applicerar vi den funktionen på frekvenserna för D standard för att få ut de tjocklekar som passar dessa frekvenser (orange).
+
+![](img/TheDONG/Plot_1.png)
+
+Det här är inte en perfekt analog för hur tjocka strängarna ska vara, då spänningen antagligen skiljer mellan olika strängar och märken. Men det optimala är om vi hittar något likt Pro steel strängar med tjocklekarna $0.117$, $0.099$, $0.081$ och $0.063$ tum.
+
+Det finns ett antal set strängar på Thomann som passar. Du kan kolla igenom att gå in på kategorin `040 5-String Electric Bass Strings` och filtrera strängar med tjocklek `040 - 120`. Jag valde att testa ett sett som heter [DR Strings Drop-Down Tuning DDT5-40](https://www.thomann.de/intl/dr_strings_drop_down_tuning_ddt5_40.htm), som verkar vara gjorda precis för det jag försöker åstadkomma. Fördelen med dessa strängar är att de verkar vara gjorda för att droppa i stämning, så om min ide om att stämma upp B, E, A och D strängarna funkar, kan jag bara använda E, A, D och G strängarna och stämma ner.
+
+
 ## Kostnad
 
 Följande delar behövde jag köpa.
