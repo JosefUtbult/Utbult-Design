@@ -1,0 +1,583 @@
+
+
+
+	
+		
+			
+		
+	
+		
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>The DONG - UTBULT DESIGN</title>
+
+		
+		<link rel="icon" href="../../../img/UtbultDesign_Small.png" />
+		
+		
+		<!-- Skeleton responsive boilerplate and base stylesheets -->
+		<link rel="stylesheet" href="../../../static/css/skeleton.css">
+		<link rel="stylesheet" href="../../../static/css/normalize.css">
+
+		<!-- Theme specific stylesheets -->
+		<link rel="stylesheet" href="../../../static/fonts/fonts.css">
+		<link rel="stylesheet" href="../../../static/css/base.css">
+		<link rel="stylesheet" href="../../../static/css/slider.css">
+		<link rel="stylesheet" href="../../../static/css/header.css">
+		<link rel="stylesheet" href="../../../static/css/burgerMenu.css">
+
+		<style>
+			.btn {
+				color: #ff0000;
+			}
+		</style>
+
+		<!-- highlight.js stylesheets -->
+		<link rel="stylesheet" href="../../../static/css/highlightjs.css">
+		
+		
+		<!-- Light -->
+		<!-- <link rel="stylesheet" href="../../../static/highlight/styles/docco.min.css"> -->
+		<!-- <link rel="stylesheet" href="../../../static/highlight/styles/panda-syntax-light.min.css"> -->
+		
+		<!-- Page specific stylesheets -->
+		
+		
+
+		<!-- Base script handling burger menu, dark and light mode -->
+		<script src="../../../static/js/base.js"></script>
+
+		
+		<!-- Extra javascript from config file -->
+		
+		<script src="../../../misc/javascript/mathjax.js"></script>
+		
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		
+		
+
+		<!-- highlight.js script -->
+		<script src="../../../static/highlight/highlight.min.js"></script>
+		<script>
+			hljs.configure({ignoreUnescapedHTML: true}); 
+			hljs.highlightAll();
+		</script>
+
+		<!-- Page specific scripts -->
+		
+		
+
+		<!-- MKDocs specific scripts -->
+
+	</head>
+	<body>
+		<div id="header" onclick="closeBurgerMenu()">
+			<a class="logo" href="../../..
+	
+		/sv/
+	
+">
+				
+					<img src="../../../img/UtbultDesign_White.svg">
+					<img src="../../../img/UtbultDesign_Black.svg">
+				
+			</a>
+			<div>
+				
+	
+		<div class="btn-container">
+			<a href="
+	
+	../../../en/music/TheDONG/
+">
+				<button class="btn">
+					
+	
+	In English
+
+				</button>
+			</a>
+		</div>
+	
+
+				<label class="switch"> 
+					<!-- <input id="theme-switch" type="checkbox" onclick="toggleLightDarkMode()"> -->
+					<input id="theme-switch" type="checkbox" onclick="toggleLightDarkMode()" checked>
+					<span class="slider">
+						<!-- Moon icon -->
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+							<!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+							<path
+								d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" />
+						</svg>
+
+						<!-- Sun icon -->
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+							<!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+							<path
+								d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM352 256c0 53-43 96-96 96s-96-43-96-96s43-96 96-96s96 43 96 96zm32 0c0-70.7-57.3-128-128-128s-128 57.3-128 128s57.3 128 128 128s128-57.3 128-128z" />
+						</svg>
+					</span>
+				</label>
+			</div>
+		</div>
+		<div id="burger-menu">
+			<div id="burger-menu-button-container">
+				<button onclick="toggleBurgerMenu()">
+					<img src="../../../static/svg/icons/burger-solid.svg"/>
+				</button>
+			</div>
+			<div id="burger-menu-content">
+				<div>
+					<ul id="nav">
+	
+	
+		
+			
+		
+			
+				
+					
+
+<li >
+	<div class="burger-heading-container">
+		<a href="../../">
+			<h1>UTBULT DESIGN</h1>
+		</a>
+		<div></div>
+	</div>
+</li>
+
+
+				
+					
+
+<li >
+	<div class="burger-heading-container">
+		<a href="../../about_me/">
+			<h1>Om mig</h1>
+		</a>
+		<div></div>
+	</div>
+</li>
+
+
+				
+					
+
+	<li>
+		<div class="burger-heading-container">
+			
+			
+				
+					
+				
+			
+				
+			
+			
+				<a href="../../hardware/">
+					<h1>
+						
+							Hårdvara
+						
+					</h1>
+				</a>
+			
+
+			<div>
+				<button onclick="toggleBurgerMenuInstance(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" preserveAspectRatio="none">
+							<!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+							<path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<ul class="hidden">
+			
+			
+			
+			
+
+<li >
+	<div class="burger-heading-container">
+		<a href="../../hardware/EmbeddedRust/">
+			<h1>Rust för inbyggda system - En introduktion</h1>
+		</a>
+		<div></div>
+	</div>
+</li>
+
+
+			
+		</ul>
+	</li>
+
+
+				
+					
+
+	<li>
+		<div class="burger-heading-container">
+			
+			
+				
+					
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+			
+				<a href="../">
+					<h1>
+						
+							Musik
+						
+					</h1>
+				</a>
+			
+
+			<div>
+				<button onclick="toggleBurgerMenuInstance(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" preserveAspectRatio="none">
+							<!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+							<path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<ul class="hidden">
+			
+			
+			
+			
+
+<li >
+	<div class="burger-heading-container">
+		<a href="../RustSoundcard/">
+			<h1>Ljudkort i Rust</h1>
+		</a>
+		<div></div>
+	</div>
+</li>
+
+
+			
+			
+
+<li class="active">
+	<div class="burger-heading-container">
+		<a href="./">
+			<h1>The DONG</h1>
+		</a>
+		<div></div>
+	</div>
+</li>
+
+
+			
+			
+
+<li >
+	<div class="burger-heading-container">
+		<a href="../test/">
+			<h1>test</h1>
+		</a>
+		<div></div>
+	</div>
+</li>
+
+
+			
+			
+
+<li >
+	<div class="burger-heading-container">
+		<a href="../test2/">
+			<h1>test2</h1>
+		</a>
+		<div></div>
+	</div>
+</li>
+
+
+			
+		</ul>
+	</li>
+
+
+				
+					
+
+	<li>
+		<div class="burger-heading-container">
+			
+			
+				
+					
+				
+			
+				
+			
+				
+			
+			
+				<a href="../../software/">
+					<h1>
+						
+							Mjukvara
+						
+					</h1>
+				</a>
+			
+
+			<div>
+				<button onclick="toggleBurgerMenuInstance(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" preserveAspectRatio="none">
+							<!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+							<path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<ul class="hidden">
+			
+			
+			
+			
+
+<li >
+	<div class="burger-heading-container">
+		<a href="../../software/HomebreweryCoCTheme/">
+			<h1>Homebrewery Call of Cthulhu Tema</h1>
+		</a>
+		<div></div>
+	</div>
+</li>
+
+
+			
+			
+
+<li >
+	<div class="burger-heading-container">
+		<a href="../../software/UtbultDesignSite/">
+			<h1>Utbult Design site</h1>
+		</a>
+		<div></div>
+	</div>
+</li>
+
+
+			
+		</ul>
+	</li>
+
+
+				
+			
+		
+	
+</ul>
+
+					
+					
+					
+						
+					
+					
+					<hr>
+
+					
+					<h1>The DONG</h1>
+					
+					<ul id="toc">
+						<li>
+						
+							
+<li >
+  <div class="burger-heading-container">
+    <a href="#planen">
+      <h2>Planen</h2>
+    </a>
+    <div></div>
+  </div>  
+</li>
+
+						
+							
+<li >
+  <div class="burger-heading-container">
+    <a href="#valj-en-bas">
+      <h2>Välj en bas</h2>
+    </a>
+    <div></div>
+  </div>  
+</li>
+
+						
+							
+<li >
+  <div class="burger-heading-container">
+    <a href="#montera-preamp">
+      <h2>Montera preamp</h2>
+    </a>
+    <div></div>
+  </div>  
+</li>
+
+						
+							
+<li >
+  <div class="burger-heading-container">
+    <a href="#strangar">
+      <h2>Strängar</h2>
+    </a>
+    <div></div>
+  </div>  
+</li>
+
+						
+							
+<li >
+  <div class="burger-heading-container">
+    <a href="#kostnad">
+      <h2>Kostnad</h2>
+    </a>
+    <div></div>
+  </div>  
+</li>
+
+						
+						</li>
+					</ul>
+					
+				</div>
+			</div>
+		</div>
+		<div class="content-container" onclick="closeBurgerMenu()">
+			<div id="content" class="container">
+				<div class="header-margin"></div>
+				
+<h1 id="the-dong">The DONG</h1>
+<p>Jag har länge velat haft en bra fyrsträngad bas med lite proggit ton. Något med mycket EQ kontroller och lätt dist.</p>
+<p><img align="right" alt="" src="/img/music/TheDONG/JosefMedKonOchDingwall.jpeg" /></p>
+<p>En av mina favoritbasar har varit en av mina vänners <a href="https://dingwallguitars.com/bass/ng-adam-nolly-getgood-signature/">Dingwall NG ADAM “NOLLY” GETGOOD SIGNATURE</a>. Den har ett riktigt tjockt ljud med fantastisk inbyggd dist som låter oerhört naturligt. Här är en bild på mig när jag spelar på den, med en kon på huvudet.</p>
+<p>Enda nackdelen med den modellen är att den kostar 30 290 kr... Det är något mer än vad jag för tillfället har möjlighet att lägga på en bas.</p>
+<!-- 2 699 € -->
+
+<p>Min fundering var därför; kan jag bygga en bas som låter någorlunda likt en Dingwall, fast för ett lägre pris?</p>
+<p>Mitt resonemang var följande; Det som gör en Dingwall NG ADAM “NOLLY” GETGOOD SIGNATURE nice att spela på är.</p>
+<ul>
+<li>Dess extra långa strängar med fan frets för att förlänga de lägsta strängarna ännu längre.</li>
+<li>Dess extra strängbrädd. En vanlig fem-/sexsträngad bas har en smalare strängbrädd för att kunna ha en smalare hals. Men en Dingwall har (iallafall den femsträngade) samma strängbredd som en fyrsträngad bas, dvs 18mm.</li>
+<li>Tre av Dingwalls egna soapbar pickups.</li>
+<li>En Darkglass preamp.</li>
+</ul>
+<p>Stränglängd är svårt att göra något åt på en billigare bas, så den faktorn får man leva med. Men strängbredd går enkelt att lösa igenom att bara använda en fyrsträngad bas. Det råkade vara så att jag ville ha just en fyrsträngad, så det var inte ett problem.</p>
+<p>Jag vill gärna ha en bas som kan gå ner till ett lågt D, då det är den lägsta tonen som jag själv tycker låter bra att spela i de flesta sammanhang. Det är bara två halvsteg lägre än en vanlig fyrsträngad bas kan gå. Därför är min plan att stämma hela basen två halvsteg lägre.</p>
+<p>Dingwalls pickups går inte att få tag på i "normala" formfaktorer. De är gjorda just för Dingwalls strängbredd och för att kunna lutas. Men det råkar vara så att en annan tillverkare vid namn <a href="https://nordstrandaudio.com/">Nordstrand Audio</a> gör en modell av pickups de kallar <a href="https://nordstrandaudio.com/collections/4-string-soapbar-bass-pickups/products/dingstrand-nordwall-4">DINGSTRAND NORDWALL</a>. Dessa är soapbar pickups som är gjorda för att efterlikna Dingwalls pickups, men i standard formfaktorer.</p>
+<p>Slutligen har vi preampen som sitter i Dingwallen. Det är en <a href="https://www.darkglass.com/creation/tone-capsule/">Darkglass Tone Capsule</a> som, då det inte är Dingwalls egna preamp, också går att köpa separat.</p>
+<h2 id="planen">Planen</h2>
+<p>Min plan var då följande.</p>
+<ul>
+<li>Hitta en fyrsträngad bas som har hål för pickups nog stora för att kunna montera ett sett <a href="https://nordstrandaudio.com/collections/4-string-soapbar-bass-pickups/products/dingstrand-nordwall-4">DINGSTRAND NORDWALL</a> pickups i.</li>
+<li>Köp ett par av pickupsen och montera i basen</li>
+<li>Köp en <a href="https://www.darkglass.com/creation/tone-capsule/">Darkglass Tone Capsule</a> och montera i basen.</li>
+<li>Byt strängarna till en grövre tjocklek för att kunna stämma ner basen men behålla spänsten i dem.</li>
+</ul>
+<h2 id="valj-en-bas">Välj en bas</h2>
+<p>För att lätt kunna byta pickupsen till <a href="https://nordstrandaudio.com/collections/4-string-soapbar-bass-pickups/products/dingstrand-nordwall-4">DINGSTRAND NORDWALL</a> pickups, behöver vi en bas vars pickups är av samma eller större storlek. <em>Standardisering</em> är dock inte något som appliceras på baspickups. Även om pickups är av samma typ betyder det tyvärr inte att deras pickups är i samma formfaktor/storlek.</p>
+<p><img align="right" alt="" src="/img/music/TheDONG/NORDSTRAND_BC.png" />
+<img align="right" alt="" src="/img/music/TheDONG/NORDSTRAND_EMG35.png" /></p>
+<p>Som tur är råkar <a href="https://nordstrandaudio.com/">Nordstrand Audio</a> vara en av få pickuptillverkare som tords skriva dimensionerna på sina pickups på deras sida. Varför detta inte tillhör standarden för bastillverkare kan jag tyvärr inte svara på...</p>
+<p><a href="https://nordstrandaudio.com/collections/4-string-soapbar-bass-pickups/products/dingstrand-nordwall-4">DINGSTRAND NORDWALL</a> kommer i två modeller. En bredare som är utformad efter en <em>Bartolini BC</em> och är <span class="arithmatex">\(101.35\)</span> bred och <span class="arithmatex">\(32.6\)</span> mm hög, samt en smalare modell som är utformad efter en <em>EMG 35</em> som är <span class="arithmatex">\(89.41\)</span> mm bred och <span class="arithmatex">\(38.35\)</span> mm hög.</p>
+<p>Jag hittade en bas som hade de pickups Nordstrands modeller var dimensionerade efter. <a href="https://www.thomann.de/intl/harley_benton_tb_70_sbk_deluxe_series_bundle.htm">Harley Benton TB-70</a> har ett par EMG35 pickups i sig. Den enda nackdelen är dock att det är en ganska ful bas...</p>
+<p>Min lösning var dock istället att kolla på ett antal basar vars pickups jag gissade var nära i storlek, och sedan maila Thomann och fråga om måtten. Jag vill påpeka att Thomanns serviceavdelning är utomordentliga och ska verkligen få beröm för deras hjälpsammet. Det här projektet hade inte gått att genomföra utan dem.</p>
+<p>Då basar med soapbar pickups är svåra att få tag på i de lägre prisklasserna, valde jag ut ett antal basar med dubbla humbucker pickups, då dessa verkar stämma bäst överens rent storleksmässigt. Jag valde även några femsträngade basar, då jag ännu inte var säker på om jag ville ha fem eller fyrsträngat.</p>
+<p>Följande dimensioner på modeller fick jag från Thomann.</p>
+<ul>
+<li><a href="https://www.thomann.de/se/ibanez_sr300eb_wk.htm">Ibanez SR300EB-WK</a> - <span class="arithmatex">\(99\)</span> mm x <span class="arithmatex">\(33\)</span> mm.</li>
+<li><a href="https://www.thomann.de/gb/ibanez_sr305eb_wk.htm">Ibanez SR305EB-WK</a> - <span class="arithmatex">\(107\)</span> mm x <span class="arithmatex">\(33\)</span> mm.</li>
+<li><a href="https://www.thomann.de/gb/yamaha_trbx_305_bl.htm">Yamaha TRBX 304</a> - <span class="arithmatex">\(108\)</span> mm x <span class="arithmatex">\(37.5\)</span> mm.</li>
+<li><a href="https://www.thomann.de/gb/marcus_miller_m2_tbk_2nd_gen.htm">Marcus Miller M2 TBK 2nd Gen</a> - <span class="arithmatex">\(101\)</span> mm x <span class="arithmatex">\(37.5\)</span> mm</li>
+<li><a href="https://www.thomann.de/gb/harley_benton_b_450_black_progressive_serie.htm">Harley Benton B-450 Progressive Serie</a> - <span class="arithmatex">\(100\)</span> mm x <span class="arithmatex">\(32\)</span> mm.</li>
+</ul>
+<p><img align="right" alt="" src="/img/music/TheDONG/Miller_M2.jpg" /></p>
+<p>Ett par millimeter för smala pickups skulle nog gå alldeles utmärkt, då hålen för pickupsen antagligen är ca <span class="arithmatex">\(1.5\)</span> mm bredare än pickupsen på varje sida. I värsta fall skulle jag också kunna fila upp hålen en aning.</p>
+<p>Men jag beslutade mig tillslut för en <a href="https://www.thomann.de/gb/marcus_miller_m2_tbk_2nd_gen.htm">Marcus Miller M2 TBK 2nd Gen</a>, då den verkar ha ungefär samma bredd på sina pickups, men aningen längre. Det råkar även vara den modellen jag personligen tycker ser bäst ut.</p>
+<h2 id="montera-preamp">Montera preamp</h2>
+<h2 id="strangar">Strängar</h2>
+<p>Jag vill stämma basen i D standard (DGCF). För att få till detta resonerade jag att jag skulle kunna köpa de grövsta strängarna jag kunde hitta för 4 strängad bas, vilket var <a href="https://www.thomann.de/gb/daddario_eps_230_ebasssaiten.htm">Daddario EPS230 strängar</a>. De har en E sträng som är 0.110 tum tjock, vilket jag först tänkte skulle kunna stämma till ett D.</p>
+<p>Men när jag stämde ner strängarna till D standard, lät allting skit. En hel del av klangen i strängarna försvann, och de blev för lösa för att kunna använda med någon användbar stränghöjd.</p>
+<p>Men jag insåg en sak; för min spelstil passar grova strängar ganska bra. Jag spelar ganska hårt, och de grova strängarna gav mer spänst vilket jag gillar.</p>
+<p>Min nästa teori var följande. Kan jag ta ett sätt lätta 5 strängad bass strängar, och stämma upp de lägsta till D för att få samma spänst som i EPS230 strängarna?</p>
+<p>Här är en graf för vilken tjocklek Daddario strängarna har i relation till frekvensen av tonen den är gjord för (blått). Med hjälp av en curve fit funktion kan vi få en ekvation som följer de strängar jag har (grön). Sedan applicerar vi den funktionen på frekvenserna för D standard för att få ut de tjocklekar som passar dessa frekvenser (orange).</p>
+<p><img alt="" src="/img/music/TheDONG/Plot_1.png" /></p>
+<p>Det här är inte en perfekt analog för hur tjocka strängarna ska vara, då spänningen antagligen skiljer mellan olika strängar och märken. Men det optimala är om vi hittar något likt Pro steel strängar med tjocklekarna <span class="arithmatex">\(0.117\)</span>, <span class="arithmatex">\(0.099\)</span>, <span class="arithmatex">\(0.081\)</span> och <span class="arithmatex">\(0.063\)</span> tum.</p>
+<p>Det finns ett antal set strängar på Thomann som passar. Du kan kolla igenom att gå in på kategorin <code>040 5-String Electric Bass Strings</code> och filtrera strängar med tjocklek <code>040 - 120</code>. Jag valde att testa ett sett som heter <a href="https://www.thomann.de/intl/dr_strings_drop_down_tuning_ddt5_40.htm">DR Strings Drop-Down Tuning DDT5-40</a>, som verkar vara gjorda precis för det jag försöker åstadkomma. Fördelen med dessa strängar är att de verkar vara gjorda för att droppa i stämning, så om min ide om att stämma upp B, E, A och D strängarna funkar, kan jag bara använda E, A, D och G strängarna och stämma ner.</p>
+<h2 id="kostnad">Kostnad</h2>
+<p>Följande delar behövde jag köpa.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Del</th>
+<th align="left">Produkt</th>
+<th align="right">Pris</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Bas</td>
+<td align="left"><a href="https://www.thomann.de/gb/marcus_miller_m2_tbk_2nd_gen.htm">Marcus Miller M2 TBK 2nd Gen</a></td>
+<td align="right">4 077 kr <!-- £309 --></td>
+</tr>
+<tr>
+<td align="left">Preamp</td>
+<td align="left"><a href="https://www.darkglass.com/creation/tone-capsule/">Darkglass Tone Capsule</a></td>
+<td align="right">1 999 kr <!-- £159 --></td>
+</tr>
+<tr>
+<td align="left">Strängar</td>
+<td align="left"><a href="https://www.thomann.de/gb/daddario_eps_230_ebasssaiten.htm">Daddario EPS230 strängar</a></td>
+<td align="right">319 kr <!-- £24.90 --></td>
+</tr>
+<tr>
+<td align="left">Summa</td>
+<td align="left"></td>
+<td align="right">6 395 kr</td>
+</tr>
+</tbody>
+</table>
+
+			</div>
+		</div>
+	</body>
+</html>
