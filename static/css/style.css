@@ -1,0 +1,9 @@
+.homepage-list {
+    font-family: UbuntuMono;
+    font-size: x-large;
+}
+
+
+.homepage-list li a {
+    font-family: inherit;
+}
