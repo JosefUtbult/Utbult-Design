@@ -2,3 +2,5 @@
 	path = Utbult-Design-Theme
 	url = git@github.com:josefutbult-webdevelopment/Utbult-Design-Theme.git
 
+[submodule "origin"]
+	url = git@github.com:JosefUtbult/Utbult-Design-Theme.git

@@ -21,7 +21,7 @@ mkdocs-minify-plugin==0.6.1
 mkdocs-redirects==1.2.0
 mkdocs-simple-hooks==0.1.5
 mkdocs-translations==0.1.1
-mkdocs-utbult-design @ git+https://github.com/josefutbult-webdevelopment/Utbult-Design-Theme.git@14342f7dffb3024cdf4b2b9b14fa87c63768539f
+mkdocs-utbult-design @ git+https://github.com/JosefUtbult/Utbult-Design-Theme.git
 packaging==21.3
 Pygments==2.13.0
 pymdown-extensions==9.8
