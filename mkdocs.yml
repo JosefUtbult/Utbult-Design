@@ -33,3 +33,5 @@ extra:
     - name: In English
       link: /en/ 
       lang: en
+
+extra_css: [static/css/style.css]

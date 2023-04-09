@@ -1,6 +1,24 @@
 # UTBULT DESIGN
+![](/img/profile_picture.jpeg){ align=right }
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<ul class="homepage-list">
+    <li>Embeddedutvecklare</li>
+    <li>Musikinovatör</li>
+    <li>Dålig kod-konnässör</li>
+    <li><a href="about_me">Och mer</a></li>
+</ul>
+
+# Sånt som jag håller på med { nowrap }
+![](/img/hardware/EmbeddedRust/nRF52840.jpg){ align=right}
+
+#### [Rust för inbyggda system - En introduktion](hardware/EmbeddedRust.md)
+En introduktion för att bygga Rustkod för inbyggda system
+
+---
+
+![](/img/music/TheDONG/TheDONG.jpg){ align=right}
+
+#### [The DONG](music/TheDONG.md)
+Ett försök till att bygga en Dingwall
+
+---
