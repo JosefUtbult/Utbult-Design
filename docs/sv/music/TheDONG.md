@@ -1,12 +1,12 @@
 ---
 description: Ett försök till att bygga en Dingwall
-image: Music/img/TheDONG/TheDONG.jpg
+image: /img/music/TheDONG/TheDONG.jpg
 ---
 
 # The DONG
 Jag har länge velat haft en bra fyrsträngad bas med lite proggit ton. Något med mycket EQ kontroller och lätt dist.
 
-![](img/TheDONG/JosefMedKonOchDingwall.jpeg){ align=right }
+![](/img/music/TheDONG/JosefMedKonOchDingwall.jpeg){ align=right }
 
 En av mina favoritbasar har varit en av mina vänners [Dingwall NG ADAM “NOLLY” GETGOOD SIGNATURE](https://dingwallguitars.com/bass/ng-adam-nolly-getgood-signature/). Den har ett riktigt tjockt ljud med fantastisk inbyggd dist som låter oerhört naturligt. Här är en bild på mig när jag spelar på den, med en kon på huvudet.
 
@@ -43,8 +43,8 @@ Min plan var då följande.
 
 För att lätt kunna byta pickupsen till [DINGSTRAND NORDWALL](https://nordstrandaudio.com/collections/4-string-soapbar-bass-pickups/products/dingstrand-nordwall-4) pickups, behöver vi en bas vars pickups är av samma eller större storlek. _Standardisering_ är dock inte något som appliceras på baspickups. Även om pickups är av samma typ betyder det tyvärr inte att deras pickups är i samma formfaktor/storlek.
 
-![](img/TheDONG/NORDSTRAND_BC.png){ align=right }
-![](img/TheDONG/NORDSTRAND_EMG35.png){ align=right }
+![](/img/music/TheDONG/NORDSTRAND_BC.png){ align=right }
+![](/img/music/TheDONG/NORDSTRAND_EMG35.png){ align=right }
 
 Som tur är råkar [Nordstrand Audio](https://nordstrandaudio.com/) vara en av få pickuptillverkare som tords skriva dimensionerna på sina pickups på deras sida. Varför detta inte tillhör standarden för bastillverkare kan jag tyvärr inte svara på...
 
@@ -64,7 +64,7 @@ Följande dimensioner på modeller fick jag från Thomann.
 - [Marcus Miller M2 TBK 2nd Gen](https://www.thomann.de/gb/marcus_miller_m2_tbk_2nd_gen.htm) - $101$ mm x $37.5$ mm
 - [Harley Benton B-450 Progressive Serie](https://www.thomann.de/gb/harley_benton_b_450_black_progressive_serie.htm) - $100$ mm x $32$ mm.
 
-![](img/TheDONG/Miller_M2.jpg){ align=right }
+![](/img/music/TheDONG/Miller_M2.jpg){ align=right }
 
 Ett par millimeter för smala pickups skulle nog gå alldeles utmärkt, då hålen för pickupsen antagligen är ca $1.5$ mm bredare än pickupsen på varje sida. I värsta fall skulle jag också kunna fila upp hålen en aning.
 
@@ -83,7 +83,7 @@ Min nästa teori var följande. Kan jag ta ett sätt lätta 5 strängad bass str
 
 Här är en graf för vilken tjocklek Daddario strängarna har i relation till frekvensen av tonen den är gjord för (blått). Med hjälp av en curve fit funktion kan vi få en ekvation som följer de strängar jag har (grön). Sedan applicerar vi den funktionen på frekvenserna för D standard för att få ut de tjocklekar som passar dessa frekvenser (orange).
 
-![](img/TheDONG/Plot_1.png)
+![](/img/music/TheDONG/Plot_1.png)
 
 Det här är inte en perfekt analog för hur tjocka strängarna ska vara, då spänningen antagligen skiljer mellan olika strängar och märken. Men det optimala är om vi hittar något likt Pro steel strängar med tjocklekarna $0.117$, $0.099$, $0.081$ och $0.063$ tum.
 

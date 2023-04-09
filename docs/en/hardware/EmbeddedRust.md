@@ -1,6 +1,6 @@
 ---
 description: An introduction to build rust code for embedded systems
-image: Hardware/img/EmbeddedRust/nRF52840.jpg
+image: /img/hardware/EmbeddedRust/nRF52840.jpg
 ---
 
 # Embedded Rust - An introduction

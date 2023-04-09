@@ -1,6 +1,6 @@
 ---
 description: En introduktion för att bygga Rustkod för inbyggda system
-image: Hardware/img/EmbeddedRust/nRF52840.jpg
+image: /img/hardware/EmbeddedRust/nRF52840.jpg
 ---
 # Rust för inbyggda system - En introduktion
 ## Vad är Rust?
@@ -504,7 +504,7 @@ Cargo är ganska likt pip om du använt det. Skillnaden är att cargo också lö
 ### Rustup vs Cargo
 Här ser du vad som är skillnaden mellan rustup och cargo
 
-![](img/EmbeddedRust/RustupAndCargo.svg)
+![](/img/hardware/EmbeddedRust/RustupAndCargo.svg)
 
 Här är en till guide som också går igenom hur man kommer igång med rust [Meduim: Rust - A Beginner Cheat Sheet](https://medium.com/codex/rust-a-beginner-cheat-sheet-8fd7b0ce49de)
 
@@ -600,15 +600,15 @@ I VS Code kan du installera pluginet `rust-analyzer`. Den kommer att analysera d
 Gå till `Extentions` i vänsterpanelen i VS Code.
 
 
-![](img/EmbeddedRust/VSCodeExtentions.png)
+![](/img/hardware/EmbeddedRust/VSCodeExtentions.png)
 
 Väl där kan du söka upp `rust-analyzer` och installera den
 
-![](img/EmbeddedRust/VSCodeRustAnalyzer.png)
+![](/img/hardware/EmbeddedRust/VSCodeRustAnalyzer.png)
 
 För att debugga kod kan du också installera `CodeLLDB`
 
-![](img/EmbeddedRust/VSCodeCodeLLDB.png)
+![](/img/hardware/EmbeddedRust/VSCodeCodeLLDB.png)
 
 ### Workspaces
 I VS Code har du det som kallas _workspaces_. Det kan beskrivas som den mapp där din kod ligger. Testa att öppna testprojektet igenom att gå till `File > Open Folder...` och välja `cargo_test` mappen.
@@ -625,7 +625,7 @@ fn main() {
 
 Nu kommer du få ett rött sträck under `-1`. Om du hovrar musen över sträcket får du en hjälpruta som beskriver varför din kod är fel.
 
-![](img/EmbeddedRust/VSCodeError.png)
+![](/img/hardware/EmbeddedRust/VSCodeError.png)
 
 ### Kompilera och debugga i VS Code
 VS Code har en integrerad terminal i sig, vilken man kan använda för att manuellt bygga och köra ditt program. Går till `Terminal > New Terminal` för att få upp den. Det kommer öppna en terminal som befinner sig i workspace mappen. Testa att bygga och köra din kod i den.
@@ -638,11 +638,11 @@ Det är helt okej, men det smidiga med VS Code är att du manuellt kan specifice
 
 Gå till menyn "Run and Debug"
 
-![](img/EmbeddedRust/VSCodeRun.png)
+![](/img/hardware/EmbeddedRust/VSCodeRun.png)
 
 Där kan du välja alternativet `create a launch.json file`
 
-![](img/EmbeddedRust/Rust 2022-12-15 20.47.29.excalidraw}
+![](/img/hardware/EmbeddedRust/Rust 2022-12-15 20.47.29.excalidraw}
 
 Det kommer ge dig ett fönster där det står att du har en `Cargo.toml` fil i ditt projekt, och det frågar om du vill generera en fil från den. Välj `Yes`.
 
@@ -650,13 +650,13 @@ Den kommer generera en fil kallad `.vscode/launch.json`. Det är en fil som spec
 
 Det autogenererade ska funka för vårt exempel. Testa att bygga och köra projektet igenom att trycka på knappen `RUN AND DEBUG`
 
-![](img/EmbeddedRust/VSCodeRunAndDebuggButton.png)
+![](/img/hardware/EmbeddedRust/VSCodeRunAndDebuggButton.png)
 
 Den kommer att bygga och köra ditt program. Du kan se hur saker händer nere i terminalen. Väljer du fliken `Terminal` bör du också se att programmet printade "Hello, world!"
 
 Nu kan du testa att debugga ditt program. Om du klickar bredvid din kod, till vänster om ett radnummer i din mainfunktion. Då får du upp en liten röd cirkel.
 
-![](img/EmbeddedRust/VSCodeDebugSign.png)
+![](/img/hardware/EmbeddedRust/VSCodeDebugSign.png)
 
 Om du nu kör `RUN AND DEBUG` kommer ditt program att starta, men det pausar ditt program och sätter det i debuggläge.
 
@@ -1105,7 +1105,7 @@ tui enable
 ```
 
 Nu bör du få upp något som ser ut såhär
-![](img/EmbeddedRust/GDB_TUI.png)
+![](/img/hardware/EmbeddedRust/GDB_TUI.png)
 
 Här är din kod. GDB markerar också vart någonstans som programmet har stannat. Du kan testa att be GDB köra en rad till och sedan stanna igen igenom att skriva
 ```gdb
@@ -1156,7 +1156,7 @@ cp  nrfx/mdk/nrf52840.svd gdb_test
 ```
 
 Sen behöver vi också ett plugin till VSCode som heter _Cortex-Debug_. Installera det på samma sätt som du installerade [rust-analyzer](#rust-plugin).
-[](img/EmbeddedRust/VSCodeCortexDebug.png)
+[](/img/hardware/EmbeddedRust/VSCodeCortexDebug.png)
 
 [ElectroRules - VSCode Cortex-Debug Launch Configurations](https://www.electrorules.com/vscode-cortex-debug-launch-configurations/)
 
