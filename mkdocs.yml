@@ -9,8 +9,13 @@ markdown_extensions:
   - markdown_include.include:
       base_path: templates
 
+plugins:
+    - redirects:
+        redirect_maps:
+            'index.md': 'sv/index.md'
+
 extra_javascript:
-  - ../misc/javascript/mathjax.js
+  - static/javascript/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
@@ -19,17 +24,6 @@ theme:
   logo_light: img/UtbultDesign_White.svg
   logo_dark: img/UtbultDesign_Black.svg
   favicon: img/UtbultDesign_Small.png
-
-plugins: 
-  - awesome-pages
-
-
-# nav:
-#   - sv:
-#     - Om Mig: sv/about_me.md
-#     - Musik: Music/
-#   - en:
-#     - About Me: en/about_me.md
 
 extra:
   alternate:
